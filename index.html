@@ -11,10 +11,12 @@
     <!-- Navbar -->
     <nav class="bg-white shadow-md p-3 flex justify-between items-center">
         <img src = "./gifts/Logo.jpeg" alt="giftSathi-advisor Logo" class="w-35 h-10">
-        <ul class="flex gap-6 font-medium">
-            <li><a href="" class="hover:text-[#7c3aed] transition duration-300"><img src = "./gifts/Wishlist Logo.png" class="w-5 "></a></li>
-            <li><a href="./pages/cart.html" class="hover:text-[#7c3aed] transition duration-300"><img src = "./gifts/Cart Logo.png" class="w-5"></a></li>
-            <li><a href="./pages/login.html" class="hover:text-[#7c3aed] transition duration-300"></a><img src = "./gifts/Account Logo.png" class="w-5"></li>    
+        <ul class="flex gap-12 font-medium">
+            <li><a href="#" class="hover:text-[#7c3aed] transition duration-300">Home</a></li>
+            <li><a href="#" class="hover:text-[#7c3aed] transition duration-300">About</a></li>
+            <li><a href="#" class="hover:text-[#7c3aed] transition duration-300">Contact</a></li>
+            <li><a href="#" class="hover:text-[#7c3aed] transition duration-300">Account</a></li>
+            <li><a href="#" class="hover:text-[#7c3aed] transition duration-300">Cart</a></li>
         </ul>
     </nav>
 
@@ -32,7 +34,10 @@
                 placeholder="Search gifts (e.g. birthday, friend)"
                 class="p-3 w-72 rounded-l-lg text-black outline-none">
 
-            <a href = "./pages/result.html" class="bg-[#7c3aed] px-6 py-3 hover:bg-purple-700 transition text-white font-medium">Search</a>
+            <button onclick="searchGift()"
+                class="bg-[#7c3aed] px-6 py-3 hover:bg-purple-700 transition text-white font-medium">
+                Search
+            </button>
         </div>
     </div>
 
@@ -42,7 +47,10 @@
     <h2 class="text-4xl font-bold text-center mb-8 text-[#7c3aed]">Gift Categories</h2>
 
     <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10 text-center">
-        <div class="bg-white pb-4 rounded-2xl shadow hover:scale-105 transition hover:border-2 hover:border-[#facc15] hover:shadow-[0_0_20px_rgba(250,204,21,0.4)]"><img src = "./gifts/Birthday Gifts.avif" alt="Birthday Gifts" class="w-full h-40 mb-2 rounded-t-2xl">🎂 Birthday Gifts</div>
+        <div class="bg-white pb-4 rounded-2xl shadow hover:scale-105 transition hover:border-2 hover:border-[#facc15] hover:shadow-[0_0_20px_rgba(250,204,21,0.4)]"><img src = "./gifts/Birthday Gifts.avif" alt="Birthday Gifts" class="w-full h-40 mb-2 rounded-t-2xl">🎂 Birthday Gifts
+        <div onclick="showGifts('🎂 Birthday Gifts')" class="cursor-pointer bg-white p-3 rounded shadow"><img src="your-image.jpg" class="w-full"><p class="text-center mt-2">🎂 Birthday Gifts</p></div>
+        <div id="result" class="p-5"></div>
+    </div>
         <div class="bg-white pb-4 rounded-2xl shadow hover:scale-105 transition hover:border-2 hover:border-[#facc15] hover:shadow-[0_0_20px_rgba(250,204,21,0.4)]"><img src = "./gifts/Anniversary Gifts.avif" alt="Anniversary Gifts" class="w-full h-40 mb-2 rounded-t-2xl">💖 Anniversary Gifts</div>
         <div class="bg-white pb-4 rounded-2xl shadow hover:scale-105 transition hover:border-2 hover:border-[#facc15] hover:shadow-[0_0_20px_rgba(250,204,21,0.4)]"><img src = "./gifts/Festival Gifts.avif" alt="Festival Gifts" class="w-full h-40 mb-2 rounded-t-2xl">🎉 Festival Gifts</div>
         <div class="bg-white pb-4 rounded-2xl shadow hover:scale-105 transition hover:border-2 hover:border-[#facc15] hover:shadow-[0_0_20px_rgba(250,204,21,0.4)]"><img src = "./gifts/Couple Gifts.avif" alt="Couple Gifts" class="w-full h-40 mb-2 rounded-t-2xl">💑 Couple Gifts</div>
@@ -56,6 +64,21 @@
         <div class="bg-white pb-4 rounded-2xl shadow hover:scale-105 transition hover:border-2 hover:border-[#facc15] hover:shadow-[0_0_20px_rgba(250,204,21,0.4)]"><img src = "./gifts/Tech Gifts.avif" alt="Tech Gifts" class="w-full h-40 mb-2 rounded-t-2xl">👩‍💻Tech Gifts</div>
         <div class="bg-white pb-4 rounded-2xl shadow hover:scale-105 transition hover:border-2 hover:border-[#facc15] hover:shadow-[0_0_20px_rgba(250,204,21,0.4)]"><img src = "./gifts/Fitness Gifts.avif" alt="Fitness Gifts" class="w-full h-40 mb-2 rounded-t-2xl">🤸‍♀️Fitness Gifts</div>
         <div class="bg-white pb-4 rounded-2xl shadow hover:scale-105 transition hover:border-2 hover:border-[#facc15] hover:shadow-[0_0_20px_rgba(250,204,21,0.4)]"><img src = "./gifts/Travel Gifts.avif" alt="Travel Gifts" class="w-full h-40 mb-2 rounded-t-2xl">🚇Travel Gifts</div>
+    </div>
+</section>
+    
+    <!-- Result -->
+<section class="text-center py-16 px-4">
+    <h2 class="text-4xl font-bold mb-10 text-[#7c3aed]">Suggestions</h2>
+
+    <div id="result" 
+         class="max-w-5xl mx-auto grid sm:grid-cols-2 gap-6">
+
+        <!-- Default message -->
+        <p class="col-span-full text-gray-400">
+            Search something to see suggestions 👀
+        </p>
+
     </div>
 </section>
 
