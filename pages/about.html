@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Gift Recommendation System</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gradient-to-br from-indigo-900 via-purple-800 to-pink-700 text-white">
+
+  <!-- HERO SECTION -->
+  <section class="h-screen flex flex-col justify-center items-center text-center px-6">
+    <h1 class="text-5xl md:text-6xl font-bold mb-6">
+      Perfect Gift Finder 🎁
+    </h1>
+    <p class="text-lg md:text-xl max-w-2xl mb-6 text-gray-200">
+      Find the perfect gift for your loved ones using our smart recommendation system powered by preferences & occasions.
+    </p>
+
+    <button onclick="scrollToDemo()" 
+      class="bg-white text-purple-800 px-6 py-3 rounded-full font-semibold hover:bg-gray-200 transition">
+      Try Demo
+    </button>
+  </section>
+
+  <!-- ABOUT CONTENT -->
+  <section class="py-20 px-6 text-center">
+    <h2 class="text-4xl font-bold mb-6">About Our System</h2>
+    <p class="max-w-3xl mx-auto text-gray-200">
+      Our Gift Recommendation System helps you choose the best gift based on age, interests, and occasion.
+      No more confusion — just smart suggestions that make people happy.
+    </p>
+  </section>
+
+  <!-- GLASS CARDS -->
+  <section class="py-16 px-6 grid md:grid-cols-3 gap-8">
+
+    <div class="backdrop-blur-lg bg-white/10 p-6 rounded-xl shadow-lg hover:scale-105 transition">
+      <h3 class="text-xl font-semibold mb-3">🎯 Personalized</h3>
+      <p>Get recommendations based on user preferences and interests.</p>
+    </div>
+
+    <div class="backdrop-blur-lg bg-white/10 p-6 rounded-xl shadow-lg hover:scale-105 transition">
+      <h3 class="text-xl font-semibold mb-3">⚡ Fast Results</h3>
+      <p>Instant gift suggestions with minimal input.</p>
+    </div>
+
+    <div class="backdrop-blur-lg bg-white/10 p-6 rounded-xl shadow-lg hover:scale-105 transition">
+      <h3 class="text-xl font-semibold mb-3">🎉 Occasion Based</h3>
+      <p>Perfect gifts for birthdays, anniversaries, and more.</p>
+    </div>
+
+  </section>
+
+  <!-- DEMO SECTION -->
+  <section id="demo" class="py-20 px-6 text-center">
+    <h2 class="text-4xl font-bold mb-6">Try Demo</h2>
+
+    <div class="max-w-md mx-auto bg-white/10 p-6 rounded-xl backdrop-blur-lg">
+      
+      <input id="occasion" type="text" placeholder="Enter Occasion (Birthday, Wedding...)" 
+        class="w-full p-3 rounded mb-4 text-black">
+
+      <button onclick="getRecommendation()" 
+        class="bg-pink-500 px-5 py-3 rounded hover:bg-pink-600 transition">
+        Get Gift Idea
+      </button>
+
+      <p id="result" class="mt-4 text-lg"></p>
+    </div>
+  </section>
+
+  <!-- EXPLORE MORE -->
+  <section class="text-center pb-20">
+    <button class="border border-white px-6 py-3 rounded-full hover:bg-white hover:text-purple-800 transition">
+      Explore More
+    </button>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-black/40 py-6 text-center">
+    <p class="text-gray-300">© 2026 Gift Recommendation System | Made with ❤️</p>
+  </footer>
+
+  <!-- JS -->
+  <script>
+    function scrollToDemo() {
+      document.getElementById("demo").scrollIntoView({ behavior: "smooth" });
+    }
+
+    function getRecommendation() {
+      let occasion = document.getElementById("occasion").value.toLowerCase();
+      let result = "";
+
+      if (occasion.includes("birthday")) {
+        result = "🎂 Suggested Gift: Smart Watch or Perfume";
+      } 
+      else if (occasion.includes("wedding")) {
+        result = "💍 Suggested Gift: Home Decor or Dinner Set";
+      } 
+      else if (occasion.includes("anniversary")) {
+        result = "❤️ Suggested Gift: Photo Frame or Jewelry";
+      } 
+      else {
+        result = "🎁 Suggested Gift: Gift Card or Flowers";
+      }
+
+      document.getElementById("result").innerText = result;
+    }
+  </script>
+
+</body>
+</html>
