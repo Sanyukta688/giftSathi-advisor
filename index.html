@@ -1,87 +1,216 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>giftSathi-advisor</title>
-    <link rel="icon" href="./gifts/Logo.jpeg">
+    <link rel="icon" href="./gifts/Logo.png">
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
+
 <body class="bg-[#f9fafb] font-sans">
     <!-- Navbar -->
-    <nav class="bg-white shadow-md p-3 flex justify-between items-center">
-        <img src = "./gifts/Logo.jpeg" alt="giftSathi-advisor Logo" class="w-35 h-10">
-        <ul class="flex gap-12 font-medium">
-            <li><a href="#" class="hover:text-[#7c3aed] transition duration-300">Home</a></li>
-            <li><a href="#" class="hover:text-[#7c3aed] transition duration-300">About</a></li>
-            <li><a href="#" class="hover:text-[#7c3aed] transition duration-300">Contact</a></li>
-            <li><a href="#" class="hover:text-[#7c3aed] transition duration-300">Account</a></li>
-            <li><a href="#" class="hover:text-[#7c3aed] transition duration-300">Cart</a></li>
+    <nav class="bg-white shadow-md p-1 flex justify-between items-center">
+        <div class="flex items-center gap-3">
+            <button id="openBtn"
+                class="text-2xl bg-white px-3 py-1 rounded shadow cursor-pointer hover:bg-gray-100 transition">
+                ☰
+            </button>
+            <img src="./gifts/Logo.png" alt="giftSathi-advisor Logo" class="w-24 h-16">
+            <span class="text-xl font-bold text-[#7c3aed]">giftSathi-advisor</span>
+        </div>
+        <ul class="flex gap-7 items-center">
+            <li><a href="./pages/wishlist.html" class="hover:text-[#7c3aed] transition duration-300 relative"><img
+                        src="./gifts/Wishlist Logo.png" class="w-6"><span id="wishlistCount"
+                        class="absolute -top-2 -right-2 text-xs bg-red-500 text-white px-1.5 rounded-full"></span></a>
+            </li>
+            <li><a href="./pages/cart.html" class="hover:text-[#7c3aed] transition duration-300 relative"><img
+                        src="./gifts/Cart Logo.png" class="w-6"><span id="cartCount"
+                        class="absolute -top-2 -right-2 text-xs bg-red-500 text-white px-1.5 rounded-full"></span></a>
+            </li>
+            <li><a href="./pages/register.html" class="hover:text-[#7c3aed] transition duration-300"><img
+                        src="./gifts/Account Logo.png" class="w-6"></a></li>
         </ul>
     </nav>
 
+    <!-- Main Layout -->
+    <!-- Sidebar -->
+    <div id="sidebar"
+        class="fixed top-0 left-0 w-64 h-full bg-white shadow-lg z-50 transform -translate-x-full transition-transform duration-300 p-4 overflow-y-auto">
+
+        <!-- Close -->
+        <button id="closeBtn" class="text-xl mb-4 hover:bg-gray-100 px-2 py-1 rounded transition">✖</button>
+
+        <h2 class="text-xl font-semibold mb-4">Menu</h2>
+
+        <div class="p-3 hover:bg-gray-100 rounded cursor-pointer transition">About</div>
+        <div class="p-3 hover:bg-gray-100 rounded cursor-pointer transition">Admin Panel</div>
+
+        <!-- Categories -->
+        <div id="categoriesBtn" class="p-3 hover:bg-gray-100 rounded cursor-pointer flex justify-between transition"
+            onclick="toggleCategories()">
+            Categories <span id="catArrow">></span>
+        </div>
+
+        <!-- Categories Dropdown -->
+        <div id="categoriesMenu" class="hidden ml-4">
+
+            <!-- Gifts -->
+            <div id="giftsBtn" class="p-2 hover:bg-gray-100 rounded cursor-pointer flex justify-between transition"
+                onclick="toggleGifts()">
+                Gifts <span id="giftsArrow">></span>
+            </div>
+
+            <!-- Gifts Dropdown -->
+            <div id="giftsMenu" class="hidden ml-4">
+                <div class="p-2 hover:bg-gray-100 rounded cursor-pointer">Birthday Gifts</div>
+                <div class="p-2 hover:bg-gray-100 rounded cursor-pointer">Anniversary Gifts</div>
+                <div class="p-2 hover:bg-gray-100 rounded cursor-pointer">Personalized Gifts</div>
+            </div>
+
+        </div>
+
+    </div>
+
+
+
     <!-- Hero Section -->
-<section class="relative text-center h-[300px] text-white">
+    <section class="relative flex-1 h-[600px] flex items-center justify-center overflow-hidden">
 
-    <!-- Content -->
-    <div class="relative z-10 flex flex-col items-center justify-center h-full">
-        <h2 class="text-5xl font-bold mb-5 text-[#facc15] drop-shadow-lg tracking-wide">Find the Perfect Gift 🎁</h2>
-        <p class="text-xl mb-5 text-black">Smart gift recommendations for every occasion</p>
+        <!-- Background -->
+        <div class="absolute inset-0 z-0">
+            <img src="./gifts/hero-bg.png" class="w-full h-full object-cover scale-105">
+            <div class="absolute inset-0 bg-black/50"></div>
+        </div>
 
-        <!-- Search -->
-        <div class="flex justify-center shadow-lg rounded-full overflow-hidden">
-            <input id="searchInput" type="text"
-                placeholder="Search gifts (e.g. birthday, friend)"
-                class="p-3 w-72 rounded-l-lg text-black outline-none">
+        <!-- Content -->
+        <div class="relative z-10 text-center px-4 max-w-4xl">
+            <h1 class="text-5xl md:text-6xl font-extrabold text-white mb-6">
+                Find the <span class="text-yellow-400">Perfect</span> Gift 🎁
+            </h1>
 
-            <button onclick="searchGift()"
-                class="bg-[#7c3aed] px-6 py-3 hover:bg-purple-700 transition text-white font-medium">
-                Search
-            </button>
+            <p class="text-xl mb-8 text-gray-200">
+                Discover curated, high-quality recommendations for every special moment.
+            </p>
+
+            <!-- Search -->
+            <div class="flex justify-center shadow-lg rounded-full overflow-hidden">
+                <input id="searchInput" type="text" placeholder="Search gifts (e.g. birthday, friend)"
+                    class="p-3 w-72 text-black rounded-l-lg">
+
+                <button onclick="searchGift()"
+                    class="bg-[#7c3aed] px-6 py-3 hover:bg-purple-700 text-white font-medium rounded-r-lg outline-none">
+                    Search
+                </button>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- Horizontal Scroll Circle Categories -->
+    <div class="p-6 bg-white">
+        <h2 class="text-2xl font-semibold mb-4 text-center">Special Categories</h2>
+
+        <div class="flex overflow-x-auto gap-4 no-scrollbar px-4 pb-2">
+            <!-- Birthday -->
+            <div class="flex flex-col items-center min-w-[100px] cursor-pointer" onclick="jumpToCategory('Birthday')">
+                <img src="./gifts/Birthday Gifts.avif"
+                    class="w-20 h-20 rounded-full object-cover border-4 border-pink-400 hover:border-pink-600 transition shadow-md">
+                <p class="text-sm font-medium mt-2">Birthday</p>
+            </div>
+
+            <!-- Anniversary -->
+            <div class="flex flex-col items-center min-w-[100px] cursor-pointer"
+                onclick="jumpToCategory('Anniversary')">
+                <img src="./gifts/Anniversary Gifts.avif"
+                    class="w-20 h-20 rounded-full object-cover border-4 border-pink-400 hover:border-pink-600 transition shadow-md">
+                <p class="text-sm font-medium mt-2">Anniversary</p>
+            </div>
+
+            <!-- Baby -->
+            <div class="flex flex-col items-center min-w-[100px] cursor-pointer" onclick="jumpToCategory('Baby')">
+                <img src="./gifts/Baby Gifts.avif"
+                    class="w-20 h-20 rounded-full object-cover border-4 border-pink-400 hover:border-pink-600 transition shadow-md">
+                <p class="text-sm font-medium mt-2">Baby</p>
+            </div>
+
+            <!-- Creative -->
+            <div class="flex flex-col items-center min-w-[100px] cursor-pointer" onclick="jumpToCategory('Creative')">
+                <img src="./gifts/Creative Gifts.avif"
+                    class="w-20 h-20 rounded-full object-cover border-4 border-pink-400 hover:border-pink-600 transition shadow-md">
+                <p class="text-sm font-medium mt-2">Creative</p>
+            </div>
+
+            <!-- Tech -->
+            <div class="flex flex-col items-center min-w-[100px] cursor-pointer" onclick="jumpToCategory('Tech')">
+                <img src="./gifts/Tech Gifts.avif"
+                    class="w-20 h-20 rounded-full object-cover border-4 border-pink-400 hover:border-pink-600 transition shadow-md">
+                <p class="text-sm font-medium mt-2">Tech</p>
+            </div>
+
+            <!-- Home -->
+            <div class="flex flex-col items-center min-w-[100px] cursor-pointer" onclick="jumpToCategory('Home')">
+                <img src="./gifts/Home Gifts.avif"
+                    class="w-20 h-20 rounded-full object-cover border-4 border-pink-400 hover:border-pink-600 transition shadow-md">
+                <p class="text-sm font-medium mt-2">Home</p>
+            </div>
+
+            <!-- Fitness -->
+            <div class="flex flex-col items-center min-w-[100px] cursor-pointer" onclick="jumpToCategory('Fitness')">
+                <img src="./gifts/Fitness Gifts.avif"
+                    class="w-20 h-20 rounded-full object-cover border-4 border-pink-400 hover:border-pink-600 transition shadow-md">
+                <p class="text-sm font-medium mt-2">Fitness</p>
+            </div>
+
+            <!-- Friendship -->
+            <div class="flex flex-col items-center min-w-[100px] cursor-pointer" onclick="jumpToCategory('Friendship')">
+                <img src="./gifts/Friendship Gifts.avif"
+                    class="w-20 h-20 rounded-full object-cover border-4 border-pink-400 hover:border-pink-600 transition shadow-md">
+                <p class="text-sm font-medium mt-2">Friendship</p>
+            </div>
+
+            <!-- Couple -->
+            <div class="flex flex-col items-center min-w-[100px] cursor-pointer" onclick="jumpToCategory('Couple')">
+                <img src="./gifts/Couple Gifts.avif"
+                    class="w-20 h-20 rounded-full object-cover border-4 border-pink-400 hover:border-pink-600 transition shadow-md">
+                <p class="text-sm font-medium mt-2">Couple</p>
+            </div>
+
+            <!-- General -->
+            <div class="flex flex-col items-center min-w-[100px] cursor-pointer" onclick="jumpToCategory('General')">
+                <img src="./gifts/General Gifts.avif"
+                    class="w-20 h-20 rounded-full object-cover border-4 border-pink-400 hover:border-pink-600 transition shadow-md">
+                <p class="text-sm font-medium mt-2">General</p>
+            </div>
+
+            <!-- Festival -->
+            <div class="flex flex-col items-center min-w-[100px] cursor-pointer" onclick="jumpToCategory('Festival')">
+                <img src="./gifts/Festival Gifts.avif"
+                    class="w-20 h-20 rounded-full object-cover border-4 border-pink-400 hover:border-pink-600 transition shadow-md">
+                <p class="text-sm font-medium mt-2">Festival</p>
+            </div>
+
+            <!-- Travel -->
+            <div class="flex flex-col items-center min-w-[100px] cursor-pointer" onclick="jumpToCategory('Travel')">
+                <img src="./gifts/Travel Gifts.avif"
+                    class="w-20 h-20 rounded-full object-cover border-4 border-pink-400 hover:border-pink-600 transition shadow-md">
+                <p class="text-sm font-medium mt-2">Travel</p>
+            </div>
         </div>
     </div>
 
-</section>
-    <!-- Categories -->
-    <section class=" px-8">
-    <h2 class="text-4xl font-bold text-center mb-8 text-[#7c3aed]">Gift Categories</h2>
+    <!-- CSS for hiding scrollbar -->
+    <style>
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
 
-    <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10 text-center">
-        <div class="bg-white pb-4 rounded-2xl shadow hover:scale-105 transition hover:border-2 hover:border-[#facc15] hover:shadow-[0_0_20px_rgba(250,204,21,0.4)]"><img src = "./gifts/Birthday Gifts.avif" alt="Birthday Gifts" class="w-full h-40 mb-2 rounded-t-2xl">🎂 Birthday Gifts
-        <div onclick="showGifts('🎂 Birthday Gifts')" class="cursor-pointer bg-white p-3 rounded shadow"><img src="your-image.jpg" class="w-full"><p class="text-center mt-2">🎂 Birthday Gifts</p></div>
-        <div id="result" class="p-5"></div>
-    </div>
-        <div class="bg-white pb-4 rounded-2xl shadow hover:scale-105 transition hover:border-2 hover:border-[#facc15] hover:shadow-[0_0_20px_rgba(250,204,21,0.4)]"><img src = "./gifts/Anniversary Gifts.avif" alt="Anniversary Gifts" class="w-full h-40 mb-2 rounded-t-2xl">💖 Anniversary Gifts</div>
-        <div class="bg-white pb-4 rounded-2xl shadow hover:scale-105 transition hover:border-2 hover:border-[#facc15] hover:shadow-[0_0_20px_rgba(250,204,21,0.4)]"><img src = "./gifts/Festival Gifts.avif" alt="Festival Gifts" class="w-full h-40 mb-2 rounded-t-2xl">🎉 Festival Gifts</div>
-        <div class="bg-white pb-4 rounded-2xl shadow hover:scale-105 transition hover:border-2 hover:border-[#facc15] hover:shadow-[0_0_20px_rgba(250,204,21,0.4)]"><img src = "./gifts/Couple Gifts.avif" alt="Couple Gifts" class="w-full h-40 mb-2 rounded-t-2xl">💑 Couple Gifts</div>
-
-        <div class="bg-white pb-4 rounded-2xl shadow hover:scale-105 transition hover:border-2 hover:border-[#facc15] hover:shadow-[0_0_20px_rgba(250,204,21,0.4)]"><img src = "./gifts/General Gifts.avif" alt="General Gifts" class="w-full h-40 mb-2 rounded-t-2xl">🎁 General Gifts</div>
-        <div class="bg-white pb-4 rounded-2xl shadow hover:scale-105 transition hover:border-2 hover:border-[#facc15] hover:shadow-[0_0_20px_rgba(250,204,21,0.4)]"><img src = "./gifts/Baby Gifts.avif" alt="Baby Gifts" class="w-full h-40 mb-2 rounded-t-2xl">👶 Baby Gifts</div>
-        <div class="bg-white pb-4 rounded-2xl shadow hover:scale-105 transition hover:border-2 hover:border-[#facc15] hover:shadow-[0_0_20px_rgba(250,204,21,0.4)]"><img src = "./gifts/Friendship Gifts.avif" alt="Friendship Gifts" class="w-full h-40 mb-2 rounded-t-2xl">🤝 Friendship Gifts</div>
-        <div class="bg-white pb-4 rounded-2xl shadow hover:scale-105 transition hover:border-2 hover:border-[#facc15] hover:shadow-[0_0_20px_rgba(250,204,21,0.4)]"><img src = "./gifts/Home Gifts.avif" alt="Home Gifts" class="w-full h-40 mb-2 rounded-t-2xl">🏠 Home Gifts</div>
-
-        <div class="bg-white pb-4 rounded-2xl shadow hover:scale-105 transition hover:border-2 hover:border-[#facc15] hover:shadow-[0_0_20px_rgba(250,204,21,0.4)]"><img src = "./gifts/Creative Gifts.avif" alt="Creative Gifts" class="w-full h-40 mb-2 rounded-t-2xl">🎨 Creative Gifts</div>
-        <div class="bg-white pb-4 rounded-2xl shadow hover:scale-105 transition hover:border-2 hover:border-[#facc15] hover:shadow-[0_0_20px_rgba(250,204,21,0.4)]"><img src = "./gifts/Tech Gifts.avif" alt="Tech Gifts" class="w-full h-40 mb-2 rounded-t-2xl">👩‍💻Tech Gifts</div>
-        <div class="bg-white pb-4 rounded-2xl shadow hover:scale-105 transition hover:border-2 hover:border-[#facc15] hover:shadow-[0_0_20px_rgba(250,204,21,0.4)]"><img src = "./gifts/Fitness Gifts.avif" alt="Fitness Gifts" class="w-full h-40 mb-2 rounded-t-2xl">🤸‍♀️Fitness Gifts</div>
-        <div class="bg-white pb-4 rounded-2xl shadow hover:scale-105 transition hover:border-2 hover:border-[#facc15] hover:shadow-[0_0_20px_rgba(250,204,21,0.4)]"><img src = "./gifts/Travel Gifts.avif" alt="Travel Gifts" class="w-full h-40 mb-2 rounded-t-2xl">🚇Travel Gifts</div>
-    </div>
-</section>
-    
-    <!-- Result -->
-<section class="text-center py-16 px-4">
-    <h2 class="text-4xl font-bold mb-10 text-[#7c3aed]">Suggestions</h2>
-
-    <div id="result" 
-         class="max-w-5xl mx-auto grid sm:grid-cols-2 gap-6">
-
-        <!-- Default message -->
-        <p class="col-span-full text-gray-400">
-            Search something to see suggestions 👀
-        </p>
-
-    </div>
-</section>
-
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+    </style>
 
     <!-- Footer -->
     <footer class="bg-black text-gray-300 text-center p-4 text-sm">
