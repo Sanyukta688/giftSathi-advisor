@@ -1,85 +1,28 @@
-// ===== SIDEBAR TOGGLE =====
-        const sidebar = document.getElementById("sidebar");
-        const openBtn = document.getElementById("openBtn");
-        const closeBtn = document.getElementById("closeBtn");
+const sidebar = document.getElementById("sidebar");
+const openBtn = document.getElementById("openBtn");
+const closeBtn = document.getElementById("closeBtn");
 
-        function toggleSidebar() {
-            sidebar.classList.toggle("-translate-x-full");
-        }
+const categoriesBtn = document.getElementById("categoriesBtn");
+const categoriesMenu = document.getElementById("categoriesMenu");
 
-        openBtn.addEventListener("click", toggleSidebar);
-        closeBtn.addEventListener("click", toggleSidebar);
+const giftsBtn = document.getElementById("giftsBtn");
+const giftsMenu = document.getElementById("giftsMenu");
 
-        // Close sidebar when clicking outside
-        document.addEventListener("click", function (event) {
-            if (!sidebar.contains(event.target) && !openBtn.contains(event.target) && !sidebar.classList.contains("-translate-x-full")) {
-                sidebar.classList.add("-translate-x-full");
-            }
-        });
+// Sidebar toggle
+openBtn.addEventListener("click", () => {
+  sidebar.classList.remove("-translate-x-full");
+});
 
-        // ===== DROPDOWN TOGGLES =====
-        function toggleCategories() {
-            document.getElementById("categoriesMenu").classList.toggle("hidden");
-            document.getElementById("catArrow").textContent =
-                document.getElementById("categoriesMenu").classList.contains("hidden") ? ">" : "v";
-        }
+closeBtn.addEventListener("click", () => {
+  sidebar.classList.add("-translate-x-full");
+});
 
-        function toggleGifts() {
-            document.getElementById("giftsMenu").classList.toggle("hidden");
-            document.getElementById("giftsArrow").textContent =
-                document.getElementById("giftsMenu").classList.contains("hidden") ? ">" : "v";
-        }
+// Dropdowns
+categoriesBtn.addEventListener("click", () => {
+  categoriesMenu.classList.toggle("hidden");
+});
 
-        // ===== CART FUNCTIONALITY =====
-        let cart = JSON.parse(localStorage.getItem("cart")) || [];
-        let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+giftsBtn.addEventListener("click", () => {
+  giftsMenu.classList.toggle("hidden");
+});
 
-        function addToCart(item) {
-            cart.push(item);
-            localStorage.setItem("cart", JSON.stringify(cart));
-            updateCartCount();
-            alert(item + " added to cart ✅");
-        }
-
-        function addToWishlist(item) {
-            wishlist.push(item);
-            localStorage.setItem("wishlist", JSON.stringify(wishlist));
-            updateWishlistCount();
-            alert(item + " added to wishlist ❤️");
-        }
-
-        function updateCartCount() {
-            document.getElementById("cartCount").innerText = cart.length;
-        }
-
-        function updateWishlistCount() {
-            document.getElementById("wishlistCount").innerText = wishlist.length;
-        }
-
-        // Initialize counts
-        updateCartCount();
-        updateWishlistCount();
-
-        // ===== CATEGORY JUMP =====
-        function jumpToCategory(category) {
-            console.log("Jumping to " + category + " category");
-            // You can add navigation logic here later
-        }
-
-        // ===== SEARCH FUNCTIONALITY =====
-        function searchGift() {
-            const searchInput = document.getElementById("searchInput").value;
-            if (searchInput.trim() === "") {
-                alert("Please enter a search term");
-                return;
-            }
-            console.log("Searching for: " + searchInput);
-            // Add your search logic here
-        }
-
-        // Allow Enter key to search
-        document.getElementById("searchInput")?.addEventListener("keypress", function (event) {
-            if (event.key === "Enter") {
-                searchGift();
-            }
-        });

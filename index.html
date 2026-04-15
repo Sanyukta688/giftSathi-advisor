@@ -21,7 +21,7 @@
             <span class="text-xl font-bold text-[#7c3aed]">giftSathi-advisor</span>
         </div>
         <ul class="flex gap-7 items-center">
-            <li><a href="./pages/wishlist.html" class="hover:text-[#7c3aed] transition duration-300 relative"><img
+            <li><a href="#" class="hover:text-[#7c3aed] transition duration-300 relative"><img
                         src="./gifts/Wishlist Logo.png" class="w-6"><span id="wishlistCount"
                         class="absolute -top-2 -right-2 text-xs bg-red-500 text-white px-1.5 rounded-full"></span></a>
             </li>
@@ -29,7 +29,7 @@
                         src="./gifts/Cart Logo.png" class="w-6"><span id="cartCount"
                         class="absolute -top-2 -right-2 text-xs bg-red-500 text-white px-1.5 rounded-full"></span></a>
             </li>
-            <li><a href="./pages/register.html" class="hover:text-[#7c3aed] transition duration-300"><img
+            <li><a href="./pages/login.html" class="hover:text-[#7c3aed] transition duration-300"><img
                         src="./gifts/Account Logo.png" class="w-6"></a></li>
         </ul>
     </nav>
@@ -37,10 +37,10 @@
     <!-- Main Layout -->
     <!-- Sidebar -->
     <div id="sidebar"
-        class="fixed top-0 left-0 w-64 h-full bg-white shadow-lg z-50 transform -translate-x-full transition-transform duration-300 p-4 overflow-y-auto">
+        class="fixed top-0 left-0 w-60 h-full bg-white shadow-lg z-50 transform -translate-x-full transition-transform duration-300 p-4 overflow-y-auto">
 
         <!-- Close -->
-        <button id="closeBtn" class="text-xl mb-4 hover:bg-gray-100 px-2 py-1 rounded transition">✖</button>
+        <button id="closeBtn" class="text-xl mb-4 hover:bg-gray-100 px-2 py-1 rounded transition"></button>
 
         <h2 class="text-xl font-semibold mb-4">Menu</h2>
 
@@ -50,23 +50,23 @@
         <!-- Categories -->
         <div id="categoriesBtn" class="p-3 hover:bg-gray-100 rounded cursor-pointer flex justify-between transition"
             onclick="toggleCategories()">
-            Categories <span id="catArrow">></span>
+            Categories <span id="catArrow"></span>
         </div>
 
         <!-- Categories Dropdown -->
-        <div id="categoriesMenu" class="hidden ml-4">
-
-            <!-- Gifts -->
-            <div id="giftsBtn" class="p-2 hover:bg-gray-100 rounded cursor-pointer flex justify-between transition"
-                onclick="toggleGifts()">
-                Gifts <span id="giftsArrow">></span>
-            </div>
-
-            <!-- Gifts Dropdown -->
-            <div id="giftsMenu" class="hidden ml-4">
-                <div class="p-2 hover:bg-gray-100 rounded cursor-pointer">Birthday Gifts</div>
-                <div class="p-2 hover:bg-gray-100 rounded cursor-pointer">Anniversary Gifts</div>
-                <div class="p-2 hover:bg-gray-100 rounded cursor-pointer">Personalized Gifts</div>
+            <div id="categoriesMenu" class="hidden ml-4">
+                <div class="p-2 hover:bg-gray-100 rounded cursor-pointer">🎂Birthday Gifts</div>
+                <div class="p-2 hover:bg-gray-100 rounded cursor-pointer">💖Anniversary Gifts</div>
+                <div class="p-2 hover:bg-gray-100 rounded cursor-pointer">🎉Festival Gifts</div>
+                <div class="p-2 hover:bg-gray-100 rounded cursor-pointer">💑Couple Gifts</div>
+                <div class="p-2 hover:bg-gray-100 rounded cursor-pointer">🎁General Gifts</div>
+                <div class="p-2 hover:bg-gray-100 rounded cursor-pointer">👶Baby Gifts</div>
+                <div class="p-2 hover:bg-gray-100 rounded cursor-pointer">🤝Friendship Gifts</div>
+                <div class="p-2 hover:bg-gray-100 rounded cursor-pointer">🏠Home Gifts</div>
+                <div class="p-2 hover:bg-gray-100 rounded cursor-pointer">🎨Creative Gifts</div>
+                <div class="p-2 hover:bg-gray-100 rounded cursor-pointer">👩‍💻Tech Gifts</div>
+                <div class="p-2 hover:bg-gray-100 rounded cursor-pointer">🤸‍♀️Fitness Gifts</div>
+                <div class="p-2 hover:bg-gray-100 rounded cursor-pointer">🚇Travel Gifts</div>
             </div>
 
         </div>
@@ -81,12 +81,12 @@
         <!-- Background -->
         <div class="absolute inset-0 z-0">
             <img src="./gifts/hero-bg.png" class="w-full h-full object-cover scale-105">
-            <div class="absolute inset-0 bg-black/50"></div>
+            <div class="absolute inset-0 bg-gradient-to-r from-black/70 to-black/30"></div>
         </div>
 
         <!-- Content -->
         <div class="relative z-10 text-center px-4 max-w-4xl">
-            <h1 class="text-5xl md:text-6xl font-extrabold text-white mb-6">
+            <h1 class="text-5xl md:text-6xl font-extrabold text-white mb-7">
                 Find the <span class="text-yellow-400">Perfect</span> Gift 🎁
             </h1>
 
@@ -109,92 +109,91 @@
     </section>
 
     <!-- Horizontal Scroll Circle Categories -->
-    <div class="p-6 bg-white">
-        <h2 class="text-2xl font-semibold mb-4 text-center">Special Categories</h2>
+    <div class="p-6 bg-white mt-8">
+        <h2 class="text-3xl font-semibold mb-8 text-center">Special Categories</h2>
 
         <div class="flex overflow-x-auto gap-4 no-scrollbar px-4 pb-2">
             <!-- Birthday -->
             <div class="flex flex-col items-center min-w-[100px] cursor-pointer" onclick="jumpToCategory('Birthday')">
                 <img src="./gifts/Birthday Gifts.avif"
-                    class="w-20 h-20 rounded-full object-cover border-4 border-pink-400 hover:border-pink-600 transition shadow-md">
+                    class="w-20 h-20 rounded-full object-cover border-2 border-purple-600 hover:border-purple-600 transition shadow-lg">
                 <p class="text-sm font-medium mt-2">Birthday</p>
             </div>
 
             <!-- Anniversary -->
-            <div class="flex flex-col items-center min-w-[100px] cursor-pointer"
-                onclick="jumpToCategory('Anniversary')">
+            <div class="flex flex-col items-center min-w-[100px] cursor-pointer" onclick="jumpToCategory('Anniversary')">
                 <img src="./gifts/Anniversary Gifts.avif"
-                    class="w-20 h-20 rounded-full object-cover border-4 border-pink-400 hover:border-pink-600 transition shadow-md">
+                    class="w-20 h-20 rounded-full object-cover border-2 border-purple-600 hover:border-purple-600 transition shadow-lg">
                 <p class="text-sm font-medium mt-2">Anniversary</p>
             </div>
 
-            <!-- Baby -->
-            <div class="flex flex-col items-center min-w-[100px] cursor-pointer" onclick="jumpToCategory('Baby')">
-                <img src="./gifts/Baby Gifts.avif"
-                    class="w-20 h-20 rounded-full object-cover border-4 border-pink-400 hover:border-pink-600 transition shadow-md">
-                <p class="text-sm font-medium mt-2">Baby</p>
-            </div>
-
-            <!-- Creative -->
-            <div class="flex flex-col items-center min-w-[100px] cursor-pointer" onclick="jumpToCategory('Creative')">
-                <img src="./gifts/Creative Gifts.avif"
-                    class="w-20 h-20 rounded-full object-cover border-4 border-pink-400 hover:border-pink-600 transition shadow-md">
-                <p class="text-sm font-medium mt-2">Creative</p>
-            </div>
-
-            <!-- Tech -->
-            <div class="flex flex-col items-center min-w-[100px] cursor-pointer" onclick="jumpToCategory('Tech')">
-                <img src="./gifts/Tech Gifts.avif"
-                    class="w-20 h-20 rounded-full object-cover border-4 border-pink-400 hover:border-pink-600 transition shadow-md">
-                <p class="text-sm font-medium mt-2">Tech</p>
-            </div>
-
-            <!-- Home -->
-            <div class="flex flex-col items-center min-w-[100px] cursor-pointer" onclick="jumpToCategory('Home')">
-                <img src="./gifts/Home Gifts.avif"
-                    class="w-20 h-20 rounded-full object-cover border-4 border-pink-400 hover:border-pink-600 transition shadow-md">
-                <p class="text-sm font-medium mt-2">Home</p>
-            </div>
-
-            <!-- Fitness -->
-            <div class="flex flex-col items-center min-w-[100px] cursor-pointer" onclick="jumpToCategory('Fitness')">
-                <img src="./gifts/Fitness Gifts.avif"
-                    class="w-20 h-20 rounded-full object-cover border-4 border-pink-400 hover:border-pink-600 transition shadow-md">
-                <p class="text-sm font-medium mt-2">Fitness</p>
-            </div>
-
-            <!-- Friendship -->
-            <div class="flex flex-col items-center min-w-[100px] cursor-pointer" onclick="jumpToCategory('Friendship')">
-                <img src="./gifts/Friendship Gifts.avif"
-                    class="w-20 h-20 rounded-full object-cover border-4 border-pink-400 hover:border-pink-600 transition shadow-md">
-                <p class="text-sm font-medium mt-2">Friendship</p>
+            <!-- Festival -->
+            <div class="flex flex-col items-center min-w-[100px] cursor-pointer" onclick="jumpToCategory('Festival')">
+                <img src="./gifts/Festival Gifts.avif"
+                    class="w-20 h-20 rounded-full object-cover border-2 border-purple-600 hover:border-purple-600 transition shadow-lg">
+                <p class="text-sm font-medium mt-2">Festival</p>
             </div>
 
             <!-- Couple -->
             <div class="flex flex-col items-center min-w-[100px] cursor-pointer" onclick="jumpToCategory('Couple')">
                 <img src="./gifts/Couple Gifts.avif"
-                    class="w-20 h-20 rounded-full object-cover border-4 border-pink-400 hover:border-pink-600 transition shadow-md">
+                    class="w-20 h-20 rounded-full object-cover border-2 border-purple-600 hover:border-purple-600 transition shadow-lg">
                 <p class="text-sm font-medium mt-2">Couple</p>
             </div>
 
             <!-- General -->
             <div class="flex flex-col items-center min-w-[100px] cursor-pointer" onclick="jumpToCategory('General')">
                 <img src="./gifts/General Gifts.avif"
-                    class="w-20 h-20 rounded-full object-cover border-4 border-pink-400 hover:border-pink-600 transition shadow-md">
+                    class="w-20 h-20 rounded-full object-cover border-2 border-purple-600 hover:border-purple-600 transition shadow-lg">
                 <p class="text-sm font-medium mt-2">General</p>
             </div>
 
-            <!-- Festival -->
-            <div class="flex flex-col items-center min-w-[100px] cursor-pointer" onclick="jumpToCategory('Festival')">
-                <img src="./gifts/Festival Gifts.avif"
-                    class="w-20 h-20 rounded-full object-cover border-4 border-pink-400 hover:border-pink-600 transition shadow-md">
-                <p class="text-sm font-medium mt-2">Festival</p>
+            <!-- Baby -->
+            <div class="flex flex-col items-center min-w-[100px] cursor-pointer" onclick="jumpToCategory('Baby')">
+                <img src="./gifts/Baby Gifts.avif"
+                    class="w-20 h-20 rounded-full object-cover border-2 border-purple-600 hover:border-purple-600 transition shadow-lg">
+                <p class="text-sm font-medium mt-2">Baby</p>
+            </div>
+
+            <!-- Friendship -->
+            <div class="flex flex-col items-center min-w-[100px] cursor-pointer" onclick="jumpToCategory('Friendship')">
+                <img src="./gifts/Friendship Gifts.avif"
+                    class="w-20 h-20 rounded-full object-cover border-2 border-purple-600 hover:border-purple-600 transition shadow-lg">
+                <p class="text-sm font-medium mt-2">Friendship</p>
+            </div>
+
+            <!-- Home -->
+            <div class="flex flex-col items-center min-w-[100px] cursor-pointer" onclick="jumpToCategory('Home')">
+                <img src="./gifts/Home Gifts.avif"
+                    class="w-20 h-20 rounded-full object-cover border-2 border-purple-600 hover:border-purple-600 transition shadow-lg">
+                <p class="text-sm font-medium mt-2">Home</p>
+            </div>
+
+            <!-- Creative -->
+            <div class="flex flex-col items-center min-w-[100px] cursor-pointer" onclick="jumpToCategory('Creative')">
+                <img src="./gifts/Creative Gifts.avif"
+                    class="w-20 h-20 rounded-full object-cover border-2 border-purple-600 hover:border-purple-600 transition shadow-lg">
+                <p class="text-sm font-medium mt-2">Creative</p>
+            </div>
+
+            <!-- Tech -->
+            <div class="flex flex-col items-center min-w-[100px] cursor-pointer" onclick="jumpToCategory('Tech')">
+                <img src="./gifts/Tech Gifts.avif"
+                    class="w-20 h-20 rounded-full object-cover border-2 border-purple-600 hover:border-purple-600 transition shadow-lg">
+                <p class="text-sm font-medium mt-2">Tech</p>
+            </div>
+
+            <!-- Fitness -->
+            <div class="flex flex-col items-center min-w-[100px] cursor-pointer" onclick="jumpToCategory('Fitness')">
+                <img src="./gifts/Fitness Gifts.avif"
+                    class="w-20 h-20 rounded-full object-cover border-2 border-purple-600 hover:border-purple-600 transition shadow-lg">
+                <p class="text-sm font-medium mt-2">Fitness</p>
             </div>
 
             <!-- Travel -->
             <div class="flex flex-col items-center min-w-[100px] cursor-pointer" onclick="jumpToCategory('Travel')">
                 <img src="./gifts/Travel Gifts.avif"
-                    class="w-20 h-20 rounded-full object-cover border-4 border-pink-400 hover:border-pink-600 transition shadow-md">
+                    class="w-20 h-20 rounded-full object-cover border-2 border-purple-600 hover:border-purple-600 transition shadow-lg">
                 <p class="text-sm font-medium mt-2">Travel</p>
             </div>
         </div>
