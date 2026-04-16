@@ -7,25 +7,54 @@
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<body class="bg-gray-100">
+<body class="bg-gray-100 min-h-screen">
   <!-- NAVBAR -->
-  <nav class="bg-white shadow-md p-3 flex justify-between items-center sticky top-0 z-50">
-    <div class="flex items-center gap-6">
-      <img src="../gifts/Logo.png" alt="Logo" class="w-24 h-16">
-    </div>
-    <ul class="flex gap-7 items-center">
-      <li><a href="./wishlist.html" class="hover:text-[#7c3aed] transition duration-300 relative"><img
-            src="../gifts/Wishlist Logo.png" class="w-6"><span id="wishlistCount"
-            class="absolute -top-2 -right-2 text-xs bg-red-500 text-white px-1.5 rounded-full"></span></a>
-      </li>
-      <li><a href="./cart.html" class="hover:text-[#7c3aed] transition duration-300 relative"><img
-            src="../gifts/Cart Logo.png" class="w-6"><span id="cartCount"
-            class="absolute -top-2 -right-2 text-xs bg-red-500 text-white px-1.5 rounded-full"></span></a>
-      </li>
-      <li><a href="./login.html" class="hover:text-[#7c3aed] transition duration-300"><img
-            src="../gifts/Account Logo.png" class="w-6"></a></li>
-    </ul>
-  </nav>
+
+  <nav class="bg-white shadow-md px-4 sm:px-6 flex justify-between items-center sticky top-0 z-50">
+
+  <!-- Left Side -->
+  <div class="flex items-center gap-4">
+
+    <!-- Back Button -->
+    <button onclick="goBack()" 
+        class="flex items-center gap-1 px-3 py-1 rounded-lg border hover:bg-gray-100 transition">
+      <span class="text-lg">←</span>
+      <span class="hidden sm:inline text-sm font-medium"></span>
+    </button>
+
+    <!-- Logo -->
+    <img src="../gifts/Logo.png" alt="Logo" class="w-24 h-16">
+
+  </div>
+
+  <!-- Right Side -->
+  <ul class="flex gap-5 sm:gap-7 items-center">
+
+    <li class="relative">
+      <a href="./wishlist.html">
+        <img src="../gifts/Wishlist Logo.png" class="w-6">
+        <span id="wishlistCount"
+              class="absolute -top-2 -right-2 text-xs bg-red-500 text-white px-1.5 rounded-full"></span>
+      </a>
+    </li>
+
+    <li class="relative">
+      <a href="./cart.html">
+        <img src="../gifts/Cart Logo.png" class="w-6">
+        <span id="cartCount"
+              class="absolute -top-2 -right-2 text-xs bg-red-500 text-white px-1.5 rounded-full"></span>
+      </a>
+    </li>
+
+    <li>
+      <a href="./login.html">
+        <img src="../gifts/Account Logo.png" class="w-6">
+      </a>
+    </li>
+
+  </ul>
+
+</nav>
 
   <!-- MAIN CONTAINER -->
   <div class="w-full px-4 sm:px-6 lg:px-10 py-6">
@@ -207,7 +236,12 @@
     <script src="../logic/products_data.js"></script>
     <script src="../logic/global.js"></script>
     <script src="../logic/dashboard.js"></script>
-
+    
+    <script>
+    function goBack() {
+    window.history.back();
+    }
+    </script>
 </body>
 
 </html>
