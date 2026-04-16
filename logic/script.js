@@ -1,28 +1,27 @@
 const sidebar = document.getElementById("sidebar");
 const openBtn = document.getElementById("openBtn");
 const closeBtn = document.getElementById("closeBtn");
-
 const categoriesBtn = document.getElementById("categoriesBtn");
 const categoriesMenu = document.getElementById("categoriesMenu");
+const arrow = document.getElementById("catArrow");
 
-const giftsBtn = document.getElementById("giftsBtn");
-const giftsMenu = document.getElementById("giftsMenu");
-
-// Sidebar toggle
-openBtn.addEventListener("click", () => {
+// OPEN SIDEBAR
+function openSidebar() {
   sidebar.classList.remove("-translate-x-full");
-});
+}
 
-closeBtn.addEventListener("click", () => {
+// CLOSE SIDEBAR
+function closeSidebar() {
   sidebar.classList.add("-translate-x-full");
-});
+}
 
-// Dropdowns
-categoriesBtn.addEventListener("click", () => {
+// TOGGLE CATEGORIES
+function toggleCategories() {
   categoriesMenu.classList.toggle("hidden");
-});
+  arrow.textContent = categoriesMenu.classList.contains("hidden") ? "▼" : "▲";
+}
 
-giftsBtn.addEventListener("click", () => {
-  giftsMenu.classList.toggle("hidden");
-});
-
+// EVENTS
+openBtn.addEventListener("click", openSidebar);
+closeBtn.addEventListener("click", closeSidebar);
+categoriesBtn.addEventListener("click", toggleCategories);
