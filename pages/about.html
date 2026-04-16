@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>Gift Recommendation System</title>
@@ -14,10 +15,11 @@
       Perfect Gift Finder 🎁
     </h1>
     <p class="text-lg md:text-xl max-w-2xl mb-6 text-gray-200">
-      Find the perfect gift for your loved ones using our smart recommendation system powered by preferences & occasions.
+      Find the perfect gift for your loved ones using our smart recommendation system powered by preferences &
+      occasions.
     </p>
 
-    <button onclick="scrollToDemo()" 
+    <button onclick="scrollToDemo()"
       class="bg-white text-purple-800 px-6 py-3 rounded-full font-semibold hover:bg-gray-200 transition">
       Try Demo
     </button>
@@ -57,12 +59,11 @@
     <h2 class="text-4xl font-bold mb-6">Try Demo</h2>
 
     <div class="max-w-md mx-auto bg-white/10 p-6 rounded-xl backdrop-blur-lg">
-      
-      <input id="occasion" type="text" placeholder="Enter Occasion (Birthday, Wedding...)" 
+
+      <input id="occasion" type="text" placeholder="Enter Occasion (Birthday, Wedding...)"
         class="w-full p-3 rounded mb-4 text-black">
 
-      <button onclick="getRecommendation()" 
-        class="bg-pink-500 px-5 py-3 rounded hover:bg-pink-600 transition">
+      <button onclick="getRecommendation()" class="bg-pink-500 px-5 py-3 rounded hover:bg-pink-600 transition">
         Get Gift Idea
       </button>
 
@@ -94,13 +95,13 @@
 
       if (occasion.includes("birthday")) {
         result = "🎂 Suggested Gift: Smart Watch or Perfume";
-      } 
+      }
       else if (occasion.includes("wedding")) {
         result = "💍 Suggested Gift: Home Decor or Dinner Set";
-      } 
+      }
       else if (occasion.includes("anniversary")) {
         result = "❤️ Suggested Gift: Photo Frame or Jewelry";
-      } 
+      }
       else {
         result = "🎁 Suggested Gift: Gift Card or Flowers";
       }
@@ -110,4 +111,5 @@
   </script>
 
 </body>
+
 </html>

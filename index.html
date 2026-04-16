@@ -18,12 +18,35 @@
         </div>
         <ul class="flex gap-5 items-center">
             <li><a href="./pages/about.html" class="hover:text-[#7c3aed] transition duration-300 relative"><img src="./gifts/About Logo.png" class="w-6"></a></li>
-            <li><a href="./pages/about.html" class="hover:text-[#7c3aed] transition duration-300 relative"><img src="./gifts/Admin Panel Logo.png" class="w-7"></a></li>
+            <li><a href="./pages/admin.html" class="hover:text-[#7c3aed] transition duration-300 relative"><img src="./gifts/Admin Panel Logo.png" class="w-7"></a></li>
             <li><a href="./pages/wishlist.html" class="hover:text-[#7c3aed] transition duration-300 relative"><img src="./gifts/Wishlist Logo.png" class="w-7"><a></a></li>
             <li><a href="./pages/cart.html" class="hover:text-[#7c3aed] transition duration-300 relative"><img src="./gifts/Cart Logo.png" class="w-7"></a></li>
             <li><a href="./pages/register.html" class="hover:text-[#7c3aed] transition duration-300"><img src="./gifts/Account Logo.png" class="w-7"></a></li>
         </ul>
     </nav>
+
+    <!-- Main Layout -->
+    <!-- Sidebar -->
+    <div id="sidebar"
+        class="fixed top-0 left-0 w-64 h-full bg-white shadow-lg z-50 transform -translate-x-full transition-transform duration-300 p-4 overflow-y-auto">
+
+        <!-- Close -->
+        <button id="closeBtn" class="text-xl mb-4 hover:bg-gray-100 px-2 py-1 rounded transition">✖</button>
+
+        <h2 class="text-xl font-semibold mb-4">Menu</h2>
+
+        <a href="./pages/about.html" class="block p-3 hover:bg-gray-100 rounded cursor-pointer transition">ℹ️ About</a>
+        <a href="./pages/contact.html" class="block p-3 hover:bg-gray-100 rounded cursor-pointer transition">📧
+            Contact</a>
+        <a href="./pages/category.html"
+            class="block p-3 hover:bg-gray-100 rounded cursor-pointer transition font-semibold text-[#7c3aed]">🎁 Browse
+            Categories</a>
+        <a href="./pages/admin.html" class="block p-3 hover:bg-gray-100 rounded cursor-pointer transition">⚙️ Admin
+            Panel</a>
+
+    </div>
+
+
 
     <!-- Hero Section -->
     <section class="relative flex-1 h-[600px] flex items-center justify-center overflow-hidden">
