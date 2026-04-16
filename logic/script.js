@@ -27,71 +27,36 @@ function toggleCategories() {
   document.getElementById("catArrow").textContent = document
     .getElementById("categoriesMenu")
     .classList.contains("hidden")
-    ? ">"
-    : "v";
+    ? "🔻"
+    : "🔻";
 }
 
-function toggleGifts() {
-  document.getElementById("giftsMenu").classList.toggle("hidden");
-  document.getElementById("giftsArrow").textContent = document
-    .getElementById("giftsMenu")
-    .classList.contains("hidden")
-    ? ">"
-    : "v";
-}
+
 
 // ===== CART FUNCTIONALITY =====
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
 let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
 
-function addToCart(item) {
-  cart.push(item);
-  localStorage.setItem("cart", JSON.stringify(cart));
-  updateCartCount();
-  alert(item + " added to cart ✅");
-}
-
-function addToWishlist(item) {
-  wishlist.push(item);
-  localStorage.setItem("wishlist", JSON.stringify(wishlist));
-  updateWishlistCount();
-  alert(item + " added to wishlist ❤️");
-}
-
-function updateCartCount() {
-  document.getElementById("cartCount").innerText = cart.length;
-}
-
-function updateWishlistCount() {
-  document.getElementById("wishlistCount").innerText = wishlist.length;
-}
-
-// Initialize counts
-updateCartCount();
-updateWishlistCount();
-
-// ===== CATEGORY JUMP =====
+// Category navigation helper
 function jumpToCategory(category) {
-  console.log("Jumping to " + category + " category");
-  // You can add navigation logic here later
-}
+  const categoryPages = {
+    Birthday: "pages/birthday.html",
+    Anniversary: "pages/anniversary.html",
+    Wedding: "pages/wedding.html",
+    Festival: "pages/festival.html",
+    Couple: "pages/couple.html",
+    General: "pages/general.html",
+    Baby: "pages/baby.html",
+    Friendship: "pages/friendship.html",
+    Home: "pages/home.html",
+    Creative: "pages/creative.html",
+    Tech: "pages/tech.html",
+    Fitness: "pages/fitness.html",
+    Travel: "pages/travel.html",
+  };
 
-// ===== SEARCH FUNCTIONALITY =====
-function searchGift() {
-  const searchInput = document.getElementById("searchInput").value;
-  if (searchInput.trim() === "") {
-    alert("Please enter a search term");
-    return;
+  const page = categoryPages[category];
+  if (page) {
+    window.location.href = page;
   }
-  console.log("Searching for: " + searchInput);
-  // Add your search logic here
 }
-
-// Allow Enter key to search
-document
-  .getElementById("searchInput")
-  ?.addEventListener("keypress", function (event) {
-    if (event.key === "Enter") {
-      searchGift();
-    }
-  });
