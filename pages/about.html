@@ -3,113 +3,74 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>Gift Recommendation System</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <title>About | giftsathi-advisor</title>
 </head>
 
-<body class="bg-gradient-to-br from-indigo-900 via-purple-800 to-pink-700 text-white">
+<body class="bg-purple-50 text-gray-700 lowercase">
 
-  <!-- HERO SECTION -->
-  <section class="h-screen flex flex-col justify-center items-center text-center px-6">
-    <h1 class="text-5xl md:text-6xl font-bold mb-6">
-      Perfect Gift Finder 🎁
-    </h1>
-    <p class="text-lg md:text-xl max-w-2xl mb-6 text-gray-200">
-      Find the perfect gift for your loved ones using our smart recommendation system powered by preferences &
-      occasions.
-    </p>
-
-    <button onclick="scrollToDemo()"
-      class="bg-white text-purple-800 px-6 py-3 rounded-full font-semibold hover:bg-gray-200 transition">
-      Try Demo
-    </button>
+  <!-- Header -->
+  <section class="bg-gradient-to-r from-purple-600 to-purple-400 text-white text-center py-12 px-5">
+    <h1 class="text-4xl font-bold tracking-wide">🎁 giftsathi-advisor</h1>
+    <p class="mt-2 opacity-90">making gifting simple & meaningful 💜</p>
   </section>
 
-  <!-- ABOUT CONTENT -->
-  <section class="py-20 px-6 text-center">
-    <h2 class="text-4xl font-bold mb-6">About Our System</h2>
-    <p class="max-w-3xl mx-auto text-gray-200">
-      Our Gift Recommendation System helps you choose the best gift based on age, interests, and occasion.
-      No more confusion — just smart suggestions that make people happy.
+  <!-- About Intro -->
+  <section class="max-w-5xl mx-auto p-6 text-center">
+    <h2 class="text-2xl font-semibold text-purple-600 mb-4">who we are</h2>
+    <p class="text-gray-600 leading-relaxed">
+      giftsathi-advisor is your smart gifting partner. we help you find the perfect gift 
+      for every occasion — birthdays, anniversaries, weddings and more.
+      our goal is simple: make gifting stress-free and joyful.
     </p>
   </section>
 
-  <!-- GLASS CARDS -->
-  <section class="py-16 px-6 grid md:grid-cols-3 gap-8">
-
-    <div class="backdrop-blur-lg bg-white/10 p-6 rounded-xl shadow-lg hover:scale-105 transition">
-      <h3 class="text-xl font-semibold mb-3">🎯 Personalized</h3>
-      <p>Get recommendations based on user preferences and interests.</p>
+  <!-- Features -->
+  <section class="max-w-6xl mx-auto p-6 grid md:grid-cols-3 gap-6">
+    
+    <div class="bg-white p-6 rounded-2xl shadow-lg text-center hover:-translate-y-1 transition">
+      <h3 class="text-xl font-semibold text-purple-600 mb-2">🎯 smart suggestions</h3>
+      <p class="text-sm text-gray-600">get personalized gift ideas based on occasion and preferences.</p>
     </div>
 
-    <div class="backdrop-blur-lg bg-white/10 p-6 rounded-xl shadow-lg hover:scale-105 transition">
-      <h3 class="text-xl font-semibold mb-3">⚡ Fast Results</h3>
-      <p>Instant gift suggestions with minimal input.</p>
+    <div class="bg-white p-6 rounded-2xl shadow-lg text-center hover:-translate-y-1 transition">
+      <h3 class="text-xl font-semibold text-purple-600 mb-2">⚡ easy to use</h3>
+      <p class="text-sm text-gray-600">simple interface to quickly find gifts without confusion.</p>
     </div>
 
-    <div class="backdrop-blur-lg bg-white/10 p-6 rounded-xl shadow-lg hover:scale-105 transition">
-      <h3 class="text-xl font-semibold mb-3">🎉 Occasion Based</h3>
-      <p>Perfect gifts for birthdays, anniversaries, and more.</p>
+    <div class="bg-white p-6 rounded-2xl shadow-lg text-center hover:-translate-y-1 transition">
+      <h3 class="text-xl font-semibold text-purple-600 mb-2">💜 for every moment</h3>
+      <p class="text-sm text-gray-600">we cover all occasions to make every moment special.</p>
     </div>
 
   </section>
 
-  <!-- DEMO SECTION -->
-  <section id="demo" class="py-20 px-6 text-center">
-    <h2 class="text-4xl font-bold mb-6">Try Demo</h2>
-
-    <div class="max-w-md mx-auto bg-white/10 p-6 rounded-xl backdrop-blur-lg">
-
-      <input id="occasion" type="text" placeholder="Enter Occasion (Birthday, Wedding...)"
-        class="w-full p-3 rounded mb-4 text-black">
-
-      <button onclick="getRecommendation()" class="bg-pink-500 px-5 py-3 rounded hover:bg-pink-600 transition">
-        Get Gift Idea
-      </button>
-
-      <p id="result" class="mt-4 text-lg"></p>
+  <!-- Story Section -->
+  <section class="bg-white py-10 px-6 mt-6">
+    <div class="max-w-5xl mx-auto text-center">
+      <h2 class="text-2xl font-semibold text-purple-600 mb-4">our story</h2>
+      <p class="text-gray-600 leading-relaxed">
+        giftsathi-advisor started with a simple idea — helping people choose the right gift without stress. 
+        we noticed how difficult it can be to find meaningful gifts, so we built a platform that gives 
+        suggestions quickly and easily.
+      </p>
     </div>
   </section>
 
-  <!-- EXPLORE MORE -->
-  <section class="text-center pb-20">
-    <button class="border border-white px-6 py-3 rounded-full hover:bg-white hover:text-purple-800 transition">
-      Explore More
-    </button>
+  <!-- CTA Section -->
+  <section class="text-center py-10">
+    <h2 class="text-2xl font-semibold text-purple-600 mb-3">ready to find the perfect gift?</h2>
+    <a href="index.html"
+      class="bg-purple-600 text-white px-6 py-3 rounded-xl hover:bg-purple-800 transition shadow-lg">
+      explore gifts 🎁
+    </a>
   </section>
 
-  <!-- FOOTER -->
-  <footer class="bg-black/40 py-6 text-center">
-    <p class="text-gray-300">© 2026 Gift Recommendation System | Made with ❤️</p>
+  <!-- Footer -->
+  <footer class="bg-purple-600 text-white text-center py-4 mt-6">
+    <p class="text-sm">© 2026 giftsathi-advisor | all rights reserved</p>
   </footer>
 
-  <!-- JS -->
-  <script>
-    function scrollToDemo() {
-      document.getElementById("demo").scrollIntoView({ behavior: "smooth" });
-    }
-
-    function getRecommendation() {
-      let occasion = document.getElementById("occasion").value.toLowerCase();
-      let result = "";
-
-      if (occasion.includes("birthday")) {
-        result = "🎂 Suggested Gift: Smart Watch or Perfume";
-      }
-      else if (occasion.includes("wedding")) {
-        result = "💍 Suggested Gift: Home Decor or Dinner Set";
-      }
-      else if (occasion.includes("anniversary")) {
-        result = "❤️ Suggested Gift: Photo Frame or Jewelry";
-      }
-      else {
-        result = "🎁 Suggested Gift: Gift Card or Flowers";
-      }
-
-      document.getElementById("result").innerText = result;
-    }
-  </script>
-
 </body>
-
 </html>
