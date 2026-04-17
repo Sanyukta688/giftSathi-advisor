@@ -9,19 +9,23 @@
 
 <body class="bg-gray-100">
   <!-- NAVBAR -->
-  <nav class="bg-white shadow-md p-3 flex justify-between items-center">
-    <img src="/gifts/Logo.jpeg" class="h-10" />
-
-    <ul class="flex gap-6 font-medium">
-      <li><a href="../index.html" class="hover:text-[#7c3aed]">Home</a></li>
-      <li><a href="birthday.html" class="hover:text-[#7c3aed]">Birthday</a></li>
-      <li><a href="anniversary.html" class="hover:text-[#7c3aed]">Anniversary</a></li>
-      <li><a href="wedding.html" class="hover:text-[#7c3aed]">Wedding</a></li>
-      <li><a href="#" class="hover:text-[#7c3aed]">About</a></li>
-      <li><a href="#" class="hover:text-[#7c3aed]">Contact</a></li>
-      <li><a href="wishlist.html" class="hover:text-[#7c3aed]">❤️ Wishlist</a></li>
-      <li><a href="cart.html" class="hover:text-[#7c3aed]">🛒 Cart</a></li>
-    </ul>
+  <nav class="bg-white shadow-md p-3 flex justify-between items-center sticky top-0 z-50">
+    <div class="flex items-center gap-6">
+      <img src="../gifts/Logo.png" alt="giftSathi-advisor Logo" class="w-24 h-16">
+      <span class="text-xl font-bold text-[#7c3aed]">giftSathi-advisor</span>
+    </div>
+    <ul class="flex gap-7 items-center">
+            <li><a href="./wishlist.html" class="hover:text-[#7c3aed] transition duration-300 relative"><img
+                        src="../gifts/Wishlist Logo.png" class="w-6"><span id="wishlistCount"
+                        class="absolute -top-2 -right-2 text-xs bg-red-500 text-white px-1.5 rounded-full"></span></a>
+            </li>
+            <li><a href="./cart.html" class="hover:text-[#7c3aed] transition duration-300 relative"><img
+                        src="../gifts/Cart Logo.png" class="w-6"><span id="cartCount"
+                        class="absolute -top-2 -right-2 text-xs bg-red-500 text-white px-1.5 rounded-full"></span></a>
+            </li>
+            <li><a href="./login.html" class="hover:text-[#7c3aed] transition duration-300"><img
+                        src="../gifts/Account Logo.png" class="w-6"></a></li>
+        </ul>
   </nav>
 
   <!-- MAIN -->
