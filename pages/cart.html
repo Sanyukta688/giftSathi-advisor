@@ -10,26 +10,32 @@
 <body class="bg-gray-100">
     <!-- NAVBAR -->
     <nav class="bg-white shadow-md p-3 flex justify-between items-center sticky top-0 z-50">
-        <div class="flex items-center gap-6">
-            <img src="../gifts/Logo.png" alt="Logo" class="w-24 h-16">
-        </div>
-        <ul class="flex gap-7 items-center">
-            <li><a href="./pages/wishlist.html" class="hover:text-[#7c3aed] transition duration-300 relative"><img
-                        src="../gifts/Wishlist Logo.png" class="w-6"><span id="wishlistCount"
-                        class="absolute -top-2 -right-2 text-xs bg-red-500 text-white px-1.5 rounded-full"></span></a>
-            </li>
-            <li><a href="./pages/cart.html" class="hover:text-[#7c3aed] transition duration-300 relative"><img
-                        src="../gifts/Cart Logo.png" class="w-6"><span id="cartCount"
-                        class="absolute -top-2 -right-2 text-xs bg-red-500 text-white px-1.5 rounded-full"></span></a>
-            </li>
-            <li><a href="./pages/login.html" class="hover:text-[#7c3aed] transition duration-300"><img
-                        src="../gifts/Account Logo.png" class="w-6"></a></li>
-        </ul>
-    </nav>
+    <div class="flex items-center gap-6">
+      <button onclick="goBack()"
+        class="flex items-center gap-1 px-3 py-1 rounded-lg border hover:bg-gray-100 transition">
+        <span class="text-lg">←</span>
+        <span class="hidden sm:inline text-sm font-medium"></span>
+      </button>
+      <img src="../gifts/Logo.png" alt="giftSathi-advisor Logo" class="w-24 h-16">
+      <span class="text-xl font-bold text-[#7c3aed]">giftSathi-advisor</span>
+    </div>
+    <ul class="flex gap-7 items-center">
+      <li><a href="./wishlist.html" class="hover:text-[#7c3aed] transition duration-300 relative"><img
+            src="../gifts/Wishlist Logo.png" class="w-6"><span id="wishlistCount"
+            class="absolute -top-2 -right-2 text-xs bg-red-500 text-white px-1.5 rounded-full"></span></a>
+      </li>
+      <li><a href="./cart.html" class="hover:text-[#7c3aed] transition duration-300 relative"><img
+            src="../gifts/Cart Logo.png" class="w-6"><span id="cartCount"
+            class="absolute -top-2 -right-2 text-xs bg-red-500 text-white px-1.5 rounded-full"></span></a>
+      </li>
+      <li><a href="./login.html" class="hover:text-[#7c3aed] transition duration-300"><img
+            src="../gifts/Account Logo.png" class="w-6"></a></li>
+    </ul>
+  </nav>
 
     <!-- MAIN CONTAINER -->
     <div class="p-8 max-w-6xl mx-auto">
-        <h1 class="text-4xl font-bold text-[#7c3aed] mb-8">Shopping Cart</h1>
+        <h1 class="text-center text-4xl font-bold text-[#7c3aed] mb-8">Shopping Cart</h1>
 
         <!-- PRODUCT DETAIL VIEW (for quick add) -->
         <div id="productDetailView" class="hidden mb-8">
