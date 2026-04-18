@@ -16,20 +16,20 @@
                 <span class="text-lg">←</span>
                 <span class="hidden sm:inline text-sm font-medium"></span>
             </button>
-            <img src="../gifts/Logo.png" alt="giftSathi-advisor Logo" class="w-24 h-16">
+            <img src="/gifts/Logo.png" alt="giftSathi-advisor Logo" class="w-24 h-16">
             <span class="text-xl font-bold text-[#7c3aed]">giftSathi-advisor</span>
         </div>
         <ul class="flex gap-7 items-center">
             <li><a href="./wishlist.html" class="hover:text-[#7c3aed] transition duration-300 relative"><img
-                        src="../gifts/Wishlist Logo.png" class="w-6"><span id="wishlistCount"
+                        src="/gifts/Wishlist Logo.png" class="w-6"><span id="wishlistCount"
                         class="absolute -top-2 -right-2 text-xs bg-red-500 text-white px-1.5 rounded-full"></span></a>
             </li>
             <li><a href="./cart.html" class="hover:text-[#7c3aed] transition duration-300 relative"><img
-                        src="../gifts/Cart Logo.png" class="w-6"><span id="cartCount"
+                        src="/gifts/Cart Logo.png" class="w-6"><span id="cartCount"
                         class="absolute -top-2 -right-2 text-xs bg-red-500 text-white px-1.5 rounded-full"></span></a>
             </li>
             <li><a href="./login.html" class="hover:text-[#7c3aed] transition duration-300"><img
-                        src="../gifts/Account Logo.png" class="w-6"></a></li>
+                        src="/gifts/Account Logo.png" class="w-6"></a></li>
         </ul>
     </nav>
     <!-- MAIN CONTAINER -->
@@ -96,58 +96,58 @@
     <script src="../logic/global.js"></script>
     <script src="../logic/products.js"></script>
     <script>
-document.addEventListener("DOMContentLoaded", () => {
-    loadWishlist();
-    updateNavbarCounts();
-});
+        document.addEventListener("DOMContentLoaded", () => {
+            loadWishlist();
+            updateNavbarCounts();
+        });
 
-// Navigation helper
-function goBack() {
-    window.history.back();
-}
+        // Navigation helper
+        function goBack() {
+            window.history.back();
+        }
 
-function loadWishlist() {
-    const wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
-    const products = JSON.parse(localStorage.getItem('products')) || [];
-    const container = document.getElementById('wishlistContainer');
-    const summary = document.getElementById('wishlistSummary');
+        function loadWishlist() {
+            const wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+            const products = JSON.parse(localStorage.getItem('products')) || [];
+            const container = document.getElementById('wishlistContainer');
+            const summary = document.getElementById('wishlistSummary');
 
-    if (!container || !summary) return;
+            if (!container || !summary) return;
 
-    if (wishlist.length === 0) {
-        container.innerHTML = '<p class="col-span-full text-gray-500 text-center py-12">Your wishlist is empty. <a href="../index.html" class="text-[#7c3aed] hover:underline">Start adding your favorite gifts!</a></p>';
-        summary.style.display = 'none';
-        return;
-    }
+            if (wishlist.length === 0) {
+                container.innerHTML = '<p class="col-span-full text-gray-500 text-center py-12">Your wishlist is empty. <a href="../index.html" class="text-[#7c3aed] hover:underline">Start adding your favorite gifts!</a></p>';
+                summary.style.display = 'none';
+                return;
+            }
 
-    // Normalize wishlist items (handle IDs + objects safely)
-    const wishlistProducts = wishlist.map(item => {
-        if (item && typeof item === 'object') return item;
-        return products.find(p => p.id == item);
-    }).filter(p => p && p.name && p.price);
+            // Normalize wishlist items (handle IDs + objects safely)
+            const wishlistProducts = wishlist.map(item => {
+                if (item && typeof item === 'object') return item;
+                return products.find(p => p.id == item);
+            }).filter(p => p && p.name && p.price);
 
-    if (wishlistProducts.length === 0) {
-        container.innerHTML = '<p class="col-span-full text-gray-500 text-center py-12">No valid products in wishlist</p>';
-        summary.style.display = 'none';
-        return;
-    }
+            if (wishlistProducts.length === 0) {
+                container.innerHTML = '<p class="col-span-full text-gray-500 text-center py-12">No valid products in wishlist</p>';
+                summary.style.display = 'none';
+                return;
+            }
 
-    let totalValue = 0;
-    const categoryCount = {};
+            let totalValue = 0;
+            const categoryCount = {};
 
-    window.currentWishlistProducts = wishlistProducts;
+            window.currentWishlistProducts = wishlistProducts;
 
-    container.innerHTML = wishlistProducts.map((product, index) => {
-        const price = parseInt(product.price) || 0;
-        totalValue += price;
+            container.innerHTML = wishlistProducts.map((product, index) => {
+                const price = parseInt(product.price) || 0;
+                totalValue += price;
 
-        const category = product.category || 'Gift';
-        categoryCount[category] = (categoryCount[category] || 0) + 1;
+                const category = product.category || 'Gift';
+                categoryCount[category] = (categoryCount[category] || 0) + 1;
 
-        return `
+                return `
         <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition">
           <div class="relative">
-            <img src="${product.image || '../gifts/Logo.png'}" class="w-full h-40 object-cover" />
+            <img src="${product.image || '/gifts/Logo.png'}" class="w-full h-40 object-cover" />
             <span class="absolute top-2 left-2 bg-red-500 text-white px-3 py-1 rounded-full text-sm">❤️ Liked</span>
           </div>
 
@@ -171,100 +171,100 @@ function loadWishlist() {
           </div>
         </div>
         `;
-    }).join('');
+            }).join('');
 
-    document.getElementById('totalWishlistItems').textContent = wishlistProducts.length;
-    document.getElementById('totalWishlistValue').textContent = totalValue;
+            document.getElementById('totalWishlistItems').textContent = wishlistProducts.length;
+            document.getElementById('totalWishlistValue').textContent = totalValue;
 
-    document.getElementById('categoryBreakdown').innerHTML =
-        Object.entries(categoryCount)
-            .map(([cat, count]) =>
-                `<p class="text-sm"><span class="font-medium">${cat}:</span> ${count} item${count > 1 ? 's' : ''}</p>`
-            ).join('');
+            document.getElementById('categoryBreakdown').innerHTML =
+                Object.entries(categoryCount)
+                    .map(([cat, count]) =>
+                        `<p class="text-sm"><span class="font-medium">${cat}:</span> ${count} item${count > 1 ? 's' : ''}</p>`
+                    ).join('');
 
-    summary.style.display = 'block';
-}
+            summary.style.display = 'block';
+        }
 
-// Remove item
-function removeFromWishlist(itemId) {
-    let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+        // Remove item
+        function removeFromWishlist(itemId) {
+            let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
 
-    wishlist = wishlist.filter(item => {
-        const id = (typeof item === 'object') ? item.id : item;
-        return id != itemId;
-    });
+            wishlist = wishlist.filter(item => {
+                const id = (typeof item === 'object') ? item.id : item;
+                return id != itemId;
+            });
 
-    localStorage.setItem('wishlist', JSON.stringify(wishlist));
-    loadWishlist();
-    updateNavbarCounts();
-}
+            localStorage.setItem('wishlist', JSON.stringify(wishlist));
+            loadWishlist();
+            updateNavbarCounts();
+        }
 
-// Clear wishlist
-function clearWishlist() {
-    if (confirm('Are you sure you want to clear your entire wishlist?')) {
-        localStorage.setItem('wishlist', JSON.stringify([]));
-        loadWishlist();
-        updateNavbarCounts();
-    }
-}
+        // Clear wishlist
+        function clearWishlist() {
+            if (confirm('Are you sure you want to clear your entire wishlist?')) {
+                localStorage.setItem('wishlist', JSON.stringify([]));
+                loadWishlist();
+                updateNavbarCounts();
+            }
+        }
 
-// Move all to cart
-function addAllToCart() {
-    const wishlistProducts = window.currentWishlistProducts || [];
+        // Move all to cart
+        function addAllToCart() {
+            const wishlistProducts = window.currentWishlistProducts || [];
 
-    wishlistProducts.forEach(product => {
-        CartManager.addToCart(product);
-    });
+            wishlistProducts.forEach(product => {
+                CartManager.addToCart(product);
+            });
 
-    localStorage.setItem('wishlist', JSON.stringify([]));
-    alert('All items moved to cart!');
-    window.location.href = 'cart.html';
-}
+            localStorage.setItem('wishlist', JSON.stringify([]));
+            alert('All items moved to cart!');
+            window.location.href = 'cart.html';
+        }
 
-// View item
-function viewWishlistItem(index) {
-    const product = window.currentWishlistProducts?.[index];
-    if (!product) return;
+        // View item
+        function viewWishlistItem(index) {
+            const product = window.currentWishlistProducts?.[index];
+            if (!product) return;
 
-    const params = new URLSearchParams({
-        productName: product.name,
-        price: product.price,
-        category: product.category || 'Gift',
-        image: product.image || '',
-        description: product.description || ''
-    });
+            const params = new URLSearchParams({
+                productName: product.name,
+                price: product.price,
+                category: product.category || 'Gift',
+                image: product.image || '',
+                description: product.description || ''
+            });
 
-    if (product.id) params.set('productId', product.id);
+            if (product.id) params.set('productId', product.id);
 
-    window.location.href = `cart.html?${params.toString()}`;
-}
+            window.location.href = `cart.html?${params.toString()}`;
+        }
 
-// Move single item
-function moveWishlistItemToCart(itemId) {
-    const product = window.currentWishlistProducts?.find(p => (p.id || p.name) == itemId);
+        // Move single item
+        function moveWishlistItemToCart(itemId) {
+            const product = window.currentWishlistProducts?.find(p => (p.id || p.name) == itemId);
 
-    if (product) {
-        CartManager.addToCart(product);
-        removeFromWishlist(itemId);
-        alert('Item moved to cart!');
-    }
-}
+            if (product) {
+                CartManager.addToCart(product);
+                removeFromWishlist(itemId);
+                alert('Item moved to cart!');
+            }
+        }
 
-// Navbar counts (SAFE fallback)
-function updateNavbarCounts() {
-    const wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
-    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+        // Navbar counts (SAFE fallback)
+        function updateNavbarCounts() {
+            const wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
 
-    const wishlistCount = document.getElementById('wishlistCount');
-    const cartCount = document.getElementById('cartCount');
+            const wishlistCount = document.getElementById('wishlistCount');
+            const cartCount = document.getElementById('cartCount');
 
-    if (wishlistCount) wishlistCount.textContent = wishlist.length;
-    if (cartCount) {
-        const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
-        cartCount.textContent = totalItems;
-    }
-}
-</script>
+            if (wishlistCount) wishlistCount.textContent = wishlist.length;
+            if (cartCount) {
+                const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+                cartCount.textContent = totalItems;
+            }
+        }
+    </script>
 </body>
 
 </html>

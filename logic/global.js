@@ -9,7 +9,7 @@ function handleGlobalSearch(event, input) {
       // Determine the search page URL (relative to the current page)
       const currentPath = window.location.pathname;
       const isSubPage = currentPath.includes("/pages/");
-      const searchUrl = isSubPage ? "../index.html" : "index.html";
+      const searchUrl = isSubPage ? "/index.html" : "index.html";
 
       // Redirect to home with search query in URL
       window.location.href = `${searchUrl}?search=${encodeURIComponent(query)}`;
@@ -155,7 +155,7 @@ if (productId) {
     name: productName,
     price: parseInt(productPrice),
     category: urlParams.get("category") || "Gift",
-    image: urlParams.get("image") || "../gifts/Logo.jpeg",
+    image: urlParams.get("image") || "/gifts/Logo.png",
     description:
       urlParams.get("description") || `Premium quality ${productName}.`,
   };
