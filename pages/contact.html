@@ -12,49 +12,29 @@
 <body class="bg-[#f9fafb] font-sans">
 
     <!-- NAVBAR -->
-    <nav class="bg-white shadow-md p-4 flex justify-between items-center">
-        <div class="flex items-center gap-3">
-            <button id="openBtn"
-                class="text-2xl bg-white px-3 py-1 rounded shadow cursor-pointer hover:bg-gray-100 transition">
-                ☰
+    <nav class="bg-white shadow-md p-3 flex justify-between items-center sticky top-0 z-50">
+        <div class="flex items-center gap-6">
+            <button onclick="goBack()"
+                class="flex items-center gap-1 px-3 py-1 rounded-lg border hover:bg-gray-100 transition">
+                <span class="text-lg">←</span>
+                <span class="hidden sm:inline text-sm font-medium"></span>
             </button>
-            <a href="../index.html" class="flex items-center gap-2">
-                <img src="/gifts/Logo.png" alt="Logo" class="w-20 h-12">
-                <span class="text-lg font-bold text-[#7c3aed]">giftSathi-advisor</span>
-            </a>
+            <img src="/gifts/Logo.png" alt="giftSathi-advisor Logo" class="w-24 h-16">
+            <span class="text-xl font-bold text-[#7c3aed]">giftSathi-advisor</span>
         </div>
-
-        <ul class="hidden md:flex gap-6 items-center text-gray-700">
-            <li><a href="../index.html" class="hover:text-[#7c3aed] transition">Home</a></li>
-            <li><a href="./about.html" class="hover:text-[#7c3aed] transition">About</a></li>
-            <li><a href="./contact.html"
-                    class="hover:text-[#7c3aed] transition font-semibold text-[#7c3aed]">Contact</a></li>
-            <li><a href="./admin.html" class="hover:text-[#7c3aed] transition">Admin</a></li>
-        </ul>
-
-        <ul class="flex gap-4 items-center">
-            <li><a href="./wishlist.html" class="hover:text-[#7c3aed] transition"><img src="/gifts/Wishlist Logo.png"
-                        class="w-6" alt="Wishlist"></a></li>
-            <li><a href="./cart.html" class="hover:text-[#7c3aed] transition"><img src="/gifts/Cart Logo.png"
-                        class="w-6" alt="Cart"></a></li>
-            <li><a href="./login.html" class="hover:text-[#7c3aed] transition"><img src="/gifts/Account Logo.png"
-                        class="w-6" alt="Account"></a></li>
+        <ul class="flex gap-7 items-center">
+            <li><a href="./wishlist.html" class="hover:text-[#7c3aed] transition duration-300 relative"><img
+                        src="/gifts/Wishlist Logo.png" class="w-6"><span id="wishlistCount"
+                        class="absolute -top-2 -right-2 text-xs bg-red-500 text-white px-1.5 rounded-full"></span></a>
+            </li>
+            <li><a href="./cart.html" class="hover:text-[#7c3aed] transition duration-300 relative"><img
+                        src="/gifts/Cart Logo.png" class="w-6"><span id="cartCount"
+                        class="absolute -top-2 -right-2 text-xs bg-red-500 text-white px-1.5 rounded-full"></span></a>
+            </li>
+            <li><a href="./login.html" class="hover:text-[#7c3aed] transition duration-300"><img
+                        src="/gifts/Account Logo.png" class="w-6"></a></li>
         </ul>
     </nav>
-
-    <!-- SIDEBAR -->
-    <div id="sidebar"
-        class="fixed top-0 left-0 w-64 h-full bg-white shadow-lg z-50 transform -translate-x-full transition-transform duration-300 p-4 overflow-y-auto">
-        <button id="closeBtn" class="text-xl mb-4 hover:bg-gray-100 px-2 py-1 rounded transition">✖</button>
-        <h2 class="text-xl font-semibold mb-6">Menu</h2>
-
-        <nav class="space-y-3">
-            <a href="../index.html" class="block p-3 hover:bg-gray-100 rounded cursor-pointer transition">🏠 Home</a>
-            <a href="./about.html" class="block p-3 hover:bg-gray-100 rounded cursor-pointer transition">ℹ️ About</a>
-            <a href="./contact.html" class="block p-3 hover:bg-gray-100 rounded bg-purple-100 transition">📧 Contact</a>
-            <a href="./admin.html" class="block p-3 hover:bg-gray-100 rounded cursor-pointer transition">⚙️ Admin</a>
-        </nav>
-    </div>
 
     <!-- MAIN CONTENT -->
     <main class="max-w-4xl mx-auto px-4 py-12">
@@ -94,7 +74,7 @@
                 <div class="grid md:grid-cols-2 gap-6">
                     <div>
                         <h3 class="font-semibold text-gray-800 mb-2">📧 Email</h3>
-                        <p class="text-gray-600">info@giftsathi.com</p>
+                        <p class="text-gray-600">info@giftSathi-advisor.com</p>
                     </div>
                     <div>
                         <h3 class="font-semibold text-gray-800 mb-2">📞 Phone</h3>
@@ -102,7 +82,7 @@
                     </div>
                     <div>
                         <h3 class="font-semibold text-gray-800 mb-2">📍 Address</h3>
-                        <p class="text-gray-600">123 Gift Street, City, Country</p>
+                        <p class="text-gray-600">123 Gift Jaitala, Nagpur, India </p>
                     </div>
                     <div>
                         <h3 class="font-semibold text-gray-800 mb-2">🕐 Hours</h3>
@@ -117,8 +97,6 @@
                     class="px-4 py-2 bg-[#7c3aed] text-white rounded hover:bg-purple-700 transition">← Back to Home</a>
                 <a href="./about.html"
                     class="px-4 py-2 bg-gray-600 text-white rounded hover:bg-gray-700 transition">About Us</a>
-                <a href="./admin.html"
-                    class="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700 transition">Admin</a>
             </div>
         </section>
     </main>
