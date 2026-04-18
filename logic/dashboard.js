@@ -1,9 +1,19 @@
 // Load products and initialize database on page load
-      document.addEventListener('DOMContentLoaded', () => {
-        initializeProductDatabase();
-        loadProducts();
-        loadGallery();
-      });
+
+// Reusable function to fix image paths for deployment compatibility
+function fixImagePath(path) {
+  if (!path) return "/gifts/Logo.png";
+  if (path.startsWith("http") || path.startsWith("data:")) return path;
+  return path.startsWith("/")
+    ? path
+    : "/" + path.replace(/^(\.\.\/|\.\/)+/, "");
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  initializeProductDatabase();
+  loadProducts();
+  loadGallery();
+});
 
       let currentGalleryImage = '';
 
@@ -45,8 +55,109 @@
             <img src="../gifts/${img}" alt="${img}" class="w-full h-24 object-cover group-hover:scale-110 transition" />
             <div class="text-xs text-gray-600 text-center p-1 truncate">${img}</div>
           </div>
-        `).join('');
-      }
+        `,
+    )
+    .join("");
+}
+
+function openQuickAddModal(imageName) {
+  currentGalleryImage = imageName;
+  document.getElementById("modalImage").src = `/gifts/${imageName}`;
+  document.getElementById("modalImageName").textContent = imageName;
+  document.getElementById("quickProductName").value = imageName
+    .replace(/\.[^/.]+$/, "")
+    .replace(/\d+$/, "")
+    .trim();
+  document.getElementById("quickProductPrice").value = "";
+  document.getElementById("quickProductCategory").value = "";
+  document.getElementById("quickAddModal").classList.remove("hidden");
+}
+
+function closeQuickAddModal() {
+  document.getElementById("quickAddModal").classList.add("hidden");
+}
+
+function addQuickProduct() {
+  const name = document.getElementById("quickProductName").value;
+  const price = document.getElementById("quickProductPrice").value;
+  const category = document.getElementById("quickProductCategory").value;
+
+  if (!name || !price || !category) {
+    alert("Please fill all fields");
+    return;
+  }
+
+  // Create new product object (using relative path consistent with products.js)
+  const newProduct = {
+    id: Date.now(),
+    name: name,
+    price: parseInt(price),
+    category: category,
+    image: `/gifts/${currentGalleryImage}`,
+    description: `${name} - Premium ${category} gift.`,
+    dateAdded: new Date().toLocaleDateString(),
+  };
+
+  if (saveProduct(newProduct)) {
+    closeQuickAddModal();
+    loadGallery();
+    loadProducts();
+    alert("Product added successfully!");
+  }
+}
+
+function addProduct() {
+  const name = document.getElementById("productName").value;
+  const price = document.getElementById("productPrice").value;
+  const category = document.getElementById("productCategory").value;
+  const imageFile = document.getElementById("productImage").files[0];
+
+  if (!name || !price || !category || !imageFile) {
+    alert("Please fill all fields and select an image");
+    return;
+  }
+
+  // Convert image to base64
+  const reader = new FileReader();
+  reader.onload = function (e) {
+    const imageBase64 = e.target.result;
+
+    const newProduct = {
+      id: Date.now(),
+      name: name,
+      price: parseInt(price),
+      category: category,
+      image: imageBase64,
+      description: `${name} - Custom ${category} gift.`,
+      dateAdded: new Date().toLocaleDateString(),
+    };
+
+    if (saveProduct(newProduct)) {
+      document.getElementById("productForm").reset();
+      document.getElementById("previewImg").classList.add("hidden");
+      loadProducts();
+      alert("Custom product added successfully!");
+    }
+  };
+  reader.readAsDataURL(imageFile);
+}
+
+function loadProducts() {
+  const products = JSON.parse(localStorage.getItem("products")) || [];
+  const productsList = document.getElementById("productsList");
+
+  if (products.length === 0) {
+    productsList.innerHTML =
+      '<p class="col-span-full text-gray-500 text-center py-8">No products found</p>';
+    return;
+  }
+
+  // Only show products in reverse order (newest first)
+  const displayProducts = [...products].reverse();
+
+  productsList.innerHTML = displayProducts
+    .map((product) => {
+      let imgPath = fixImagePath(product.image);
 
       function openQuickAddModal(imageName) {
         currentGalleryImage = imageName;
@@ -147,7 +258,7 @@
 
           return `
             <div class="bg-gray-50 rounded-lg overflow-hidden border border-gray-200 hover:shadow-lg transition">
-              <img src="${imgPath}" alt="${product.name}" class="w-full h-40 object-cover" />
+              <img src="${imgPath}" alt="${product.name}" class="w-full h-40 object-cover" onerror="this.src='/gifts/Logo.png'" />
               <div class="p-4">
                 <div class="flex justify-between items-start mb-1">
                   <h3 class="font-semibold text-gray-800 truncate flex-1">${product.name}</h3>
@@ -365,7 +476,7 @@ function goToProductDetail(productId) {
   
   // Redirect to cart page with product id
   window.location.href = `${getCartPageUrl()}?productId=${productId}`;
-}
+  }
 
 // Like toggle function (kept for backward compatibility)
 function toggleLike(btn) {
