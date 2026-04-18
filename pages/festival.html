@@ -50,8 +50,16 @@
   <script src="../logic/products.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', function () {
-      loadProductsByCategory('Festival', '#productContainer');
+      loadProductsByCategory('Festival', '.p-6');
     });
+
+    function toggleLike(btn) {
+      btn.innerHTML = btn.innerHTML === "🤍" ? "❤️" : "🤍";
+    }
+
+    function addToCart(name, price) {
+      alert(name + " added to cart - ₹" + price);
+    }
 
     function goBack() {
       window.history.back();

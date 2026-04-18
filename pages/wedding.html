@@ -50,12 +50,20 @@
     <script src="../logic/products.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            loadProductsByCategory('Wedding', '#productContainer');
-        });
+      loadProductsByCategory('Wedding', '.p-6');
+    });
 
-        function goBack() {
-            window.history.back();
-        }
+    function toggleLike(btn) {
+      btn.innerHTML = btn.innerHTML === "🤍" ? "❤️" : "🤍";
+    }
+
+    function addToCart(name, price) {
+      alert(name + " added to cart - ₹" + price);
+    }
+
+    function goBack() {
+      window.history.back();
+    }
     </script>
 </body>
 

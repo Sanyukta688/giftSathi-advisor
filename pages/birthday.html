@@ -50,10 +50,17 @@
   <script src="../logic/cart.js"></script>
   <script src="../logic/products.js"></script>
   <script>
-    // Load products dynamically
     document.addEventListener('DOMContentLoaded', function () {
-      loadProductsByCategory('Birthday', '#productContainer');
+      loadProductsByCategory('Birthday', '.p-6');
     });
+
+    function toggleLike(btn) {
+      btn.innerHTML = btn.innerHTML === "🤍" ? "❤️" : "🤍";
+    }
+
+    function addToCart(name, price) {
+      alert(name + " added to cart - ₹" + price);
+    }
 
     function goBack() {
       window.history.back();
