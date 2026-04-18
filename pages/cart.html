@@ -11,27 +11,22 @@
     <!-- NAVBAR -->
     <nav class="bg-white shadow-md p-3 flex justify-between items-center sticky top-0 z-50">
         <div class="flex items-center gap-6">
-            <img src="../gifts/Logo.jpeg" alt="Logo" class="w-24 h-8">
-            <div class="relative hidden md:block">
-                <input type="text" placeholder="Global search..." onkeyup="handleGlobalSearch(event, this)"
-                    class="pl-10 pr-4 py-1.5 bg-gray-100 rounded-full text-sm w-64 outline-none focus:ring-2 focus:ring-[#7c3aed] transition-all">
-                <span class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">🔍</span>
-            </div>
+            <img src="../gifts/Logo.png" alt="Logo" class="w-24 h-16">
         </div>
         <ul class="flex gap-7 items-center">
             <li><a href="./pages/wishlist.html" class="hover:text-[#7c3aed] transition duration-300 relative"><img
-                        src="./gifts/Wishlist Logo.png" class="w-6"><span id="wishlistCount"
+                        src="../gifts/Wishlist Logo.png" class="w-6"><span id="wishlistCount"
                         class="absolute -top-2 -right-2 text-xs bg-red-500 text-white px-1.5 rounded-full"></span></a>
             </li>
             <li><a href="./pages/cart.html" class="hover:text-[#7c3aed] transition duration-300 relative"><img
-                        src="./gifts/Cart Logo.png" class="w-6"><span id="cartCount"
+                        src="../gifts/Cart Logo.png" class="w-6"><span id="cartCount"
                         class="absolute -top-2 -right-2 text-xs bg-red-500 text-white px-1.5 rounded-full"></span></a>
             </li>
             <li><a href="./pages/login.html" class="hover:text-[#7c3aed] transition duration-300"><img
-                        src="./gifts/Account Logo.png" class="w-6"></a></li>
+                        src="../gifts/Account Logo.png" class="w-6"></a></li>
         </ul>
-  </nav>
-  
+    </nav>
+
     <!-- MAIN CONTAINER -->
     <div class="p-8 max-w-6xl mx-auto">
         <h1 class="text-4xl font-bold text-[#7c3aed] mb-8">Shopping Cart</h1>
@@ -125,7 +120,7 @@
             </div>
 
             <!-- Cart Summary -->
-            <div class="bg-white rounded-2xl shadow-md p-8 sticky bottom-0">
+            <div class="bg-white rounded-2xl shadow-md p-8">
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                     <div>
                         <p class="text-gray-600">Total Items</p>
@@ -151,12 +146,9 @@
     </div>
 
     <!-- JS -->
-    <script src="../logic/global.js"></script>
     <script src="../logic/cart.js"></script>
+    <script src="../logic/global.js"></script>
     <script src="../logic/products.js"></script>
-
-<script>
-/* YOUR FULL JS CODE HERE (exactly what you sent) */
-</script>
 </body>
+
 </html>
