@@ -3,6 +3,15 @@
  * This file handles displaying products, cart, and wishlist functionality
  */
 
+// Reusable function to fix image paths for deployment compatibility
+function fixImagePath(path) {
+  if (!path) return "/gifts/Logo.png";
+  if (path.startsWith("http") || path.startsWith("data:")) return path;
+  return path.startsWith("/")
+    ? path
+    : "/" + path.replace(/^(\.\.\/|\.\/)+/, "");
+}
+
 // Initialize Database from static project data
 function initializeProductDatabase() {
   const existingProducts = JSON.parse(localStorage.getItem("products")) || [];
@@ -87,19 +96,12 @@ function loadProductsByCategory(categoryName, containerSelector) {
   const productHTML = categoryProducts
     .map((product) => {
       // Process image path to work from current page depth
-      let imgPath = product.image;
-
-      // Always ensure root path
-      if (!imgPath.startsWith("http") && !imgPath.startsWith("data:")) {
-        imgPath = imgPath.startsWith("/")
-          ? imgPath
-          : "/" + imgPath.replace(/^(\.\.\/|\.\/)+/, "");
-      }
+      let imgPath = fixImagePath(product.image);
 
       return `
       <div class="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-xl transition-all transform hover:-translate-y-2 group">
         <div class="relative overflow-hidden">
-          <img src="${imgPath}" alt="${product.name}" class="w-full h-56 object-cover transition-transform duration-500 group-hover:scale-110" />
+          <img src="${imgPath}" alt="${product.name}" class="w-full h-56 object-cover transition-transform duration-500 group-hover:scale-110" onerror="this.src='/gifts/Logo.png'" />
           <button
             onclick="toggleWishlist(this, ${product.id})"
             class="absolute top-3 right-3 bg-white/90 backdrop-blur-md p-2 rounded-full shadow-sm hover:scale-110 transition-all wishlist-btn"

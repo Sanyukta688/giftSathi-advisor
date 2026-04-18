@@ -1,4 +1,14 @@
 // Load products and initialize database on page load
+
+// Reusable function to fix image paths for deployment compatibility
+function fixImagePath(path) {
+  if (!path) return "/gifts/Logo.png";
+  if (path.startsWith("http") || path.startsWith("data:")) return path;
+  return path.startsWith("/")
+    ? path
+    : "/" + path.replace(/^(\.\.\/|\.\/)+/, "");
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   initializeProductDatabase();
   loadProducts();
@@ -158,14 +168,11 @@ function loadProducts() {
 
   productsList.innerHTML = displayProducts
     .map((product) => {
-      let imgPath = product.image;
-      if (!imgPath.startsWith("data:") && !imgPath.startsWith("http")) {
-        imgPath = "../" + imgPath;
-      }
+      let imgPath = fixImagePath(product.image);
 
       return `
             <div class="bg-gray-50 rounded-lg overflow-hidden border border-gray-200 hover:shadow-lg transition">
-              <img src="${imgPath}" alt="${product.name}" class="w-full h-40 object-cover" />
+              <img src="${imgPath}" alt="${product.name}" class="w-full h-40 object-cover" onerror="this.src='/gifts/Logo.png'" />
               <div class="p-4">
                 <div class="flex justify-between items-start mb-1">
                   <h3 class="font-semibold text-gray-800 truncate flex-1">${product.name}</h3>
@@ -402,7 +409,7 @@ function goToProductDetail(productId) {
 
   // Redirect to cart page with product id
   window.location.href = `${getCartPageUrl()}?productId=${productId}`;
-}
+  }
 
 // Like toggle function (kept for backward compatibility)
 function toggleLike(btn) {

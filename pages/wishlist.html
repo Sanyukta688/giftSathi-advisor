@@ -96,6 +96,15 @@
     <script src="../logic/global.js"></script>
     <script src="../logic/products.js"></script>
     <script>
+        // Reusable function to fix image paths for deployment compatibility
+        function fixImagePath(path) {
+            if (!path) return "/gifts/Logo.png";
+            if (path.startsWith("http") || path.startsWith("data:")) return path;
+            return path.startsWith("/")
+                ? path
+                : "/" + path.replace(/^(\.\.\/|\.\/)+/, "");
+        }
+
         document.addEventListener("DOMContentLoaded", () => {
             loadWishlist();
             updateNavbarCounts();
@@ -147,7 +156,8 @@
                 return `
         <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition">
           <div class="relative">
-            <img src="${product.image || '/gifts/Logo.png'}" class="w-full h-40 object-cover" />
+        }
+            <img src="${fixImagePath(product.image || '/gifts/Logo.png')}" class="w-full h-40 object-cover" onerror="this.src='/gifts/Logo.png'" />
             <span class="absolute top-2 left-2 bg-red-500 text-white px-3 py-1 rounded-full text-sm">❤️ Liked</span>
           </div>
 
