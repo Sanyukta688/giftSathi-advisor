@@ -2,6 +2,34 @@
  * Global search logic for the navbar across all pages
  */
 
+// Reusable function to fix image paths for deployment compatibility
+function fixImagePath(path) {
+  if (!path) return "/gifts/Logo.png";
+  if (path.startsWith("http") || path.startsWith("data:")) return path;
+  return path.startsWith("/")
+    ? path
+    : "/" + path.replace(/^(\.\.\/|\.\/)+/, "");
+}
+
+// Migrate existing localStorage data to fix image paths
+function migrateLocalStorageImagePaths() {
+  // Migrate cart
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+  cart = cart.map((item) => ({
+    ...item,
+    image: fixImagePath(item.image),
+  }));
+  localStorage.setItem("cart", JSON.stringify(cart));
+
+  // Migrate products
+  let products = JSON.parse(localStorage.getItem("products")) || [];
+  products = products.map((product) => ({
+    ...product,
+    image: fixImagePath(product.image),
+  }));
+  localStorage.setItem("products", JSON.stringify(products));
+}
+
 function handleGlobalSearch(event, input) {
   if (event.key === "Enter") {
     const query = input.value.trim();
@@ -19,6 +47,7 @@ function handleGlobalSearch(event, input) {
 
 // On page load, check for search query in URL (for Home page)
 document.addEventListener("DOMContentLoaded", () => {
+  migrateLocalStorageImagePaths();
   const urlParams = new URLSearchParams(window.location.search);
   const searchQuery = urlParams.get("search");
   const searchInput = document.getElementById("searchInput");
@@ -77,12 +106,10 @@ function displaySearchResults(searchQuery) {
       ? '<div class="col-span-full py-12 text-center text-gray-500">No gifts found for your search. Please try a different keyword.</div>'
       : results
           .map((product) => {
-            const imagePath = product.image.startsWith("/")
-              ? product.image
-              : `/${product.image}`;
+            const imagePath = fixImagePath(product.image);
             return `
           <div class="bg-white rounded-3xl shadow-md overflow-hidden hover:shadow-xl transition">
-            <img src="${imagePath}" alt="${product.name}" class="w-full h-52 object-cover" />
+            <img src="${imagePath}" alt="${product.name}" class="w-full h-52 object-cover" onerror="this.src='/gifts/Logo.png'" />
             <div class="p-5 space-y-4">
               <div class="flex justify-between items-center">
                 <div>
@@ -170,7 +197,12 @@ function showProductDetail() {
   document.getElementById("productDetailView").classList.remove("hidden");
   document.getElementById("cartItemsView").style.display = "none";
 
-  document.getElementById("detailImage").src = currentProduct.image;
+  document.getElementById("detailImage").src = fixImagePath(
+    currentProduct.image,
+  );
+  document.getElementById("detailImage").onerror = function () {
+    this.src = "/gifts/Logo.png";
+  };
   document.getElementById("detailName").textContent = currentProduct.name;
   document.getElementById("detailCategoryValue").textContent =
     currentProduct.category;
@@ -248,7 +280,7 @@ function loadCart() {
     .map(
       (item) => `
           <div class="bg-white rounded-lg shadow-md p-4 hover:shadow-lg transition">
-            <img src="${item.image}" alt="${item.name}" class="w-full h-40 object-cover rounded-lg mb-3" />
+            <img src="${fixImagePath(item.image)}" alt="${item.name}" class="w-full h-40 object-cover rounded-lg mb-3" onerror="this.src='/gifts/Logo.png'" />
             <h3 class="font-semibold text-gray-800 mb-2">${item.name}</h3>
             <p class="text-green-600 font-bold mb-2">₹${item.price}</p>
             

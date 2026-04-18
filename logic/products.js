@@ -3,8 +3,37 @@
  * This file handles displaying products, cart, and wishlist functionality
  */
 
+// Reusable function to fix image paths for deployment compatibility
+function fixImagePath(path) {
+  if (!path) return "/gifts/Logo.png";
+  if (path.startsWith("http") || path.startsWith("data:")) return path;
+  return path.startsWith("/")
+    ? path
+    : "/" + path.replace(/^(\.\.\/|\.\/)+/, "");
+}
+// Migrate existing localStorage data to fix image paths
+function migrateLocalStorageImagePaths() {
+  // Migrate cart
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+  cart = cart.map((item) => ({
+    ...item,
+    image: fixImagePath(item.image),
+  }));
+  localStorage.setItem("cart", JSON.stringify(cart));
+
+  // Migrate products
+  let products = JSON.parse(localStorage.getItem("products")) || [];
+  products = products.map((product) => ({
+    ...product,
+    image: fixImagePath(product.image),
+  }));
+  localStorage.setItem("products", JSON.stringify(products));
+}
 // Initialize Database from static project data
 function initializeProductDatabase() {
+  // Migrate existing data first
+  migrateLocalStorageImagePaths();
+
   const existingProducts = JSON.parse(localStorage.getItem("products")) || [];
 
   // Check if we have seeded products already
@@ -17,11 +46,7 @@ function initializeProductDatabase() {
       name: p.name,
       price: p.price,
       category: p.category,
-      image: p.image.startsWith("/")
-        ? p.image.substring(1)
-        : p.image.startsWith("./")
-          ? p.image.substring(2)
-          : p.image,
+      image: fixImagePath(p.image),
       description: p.description || `Premium ${p.category} gift: ${p.name}.`,
       dateAdded: new Date().toLocaleDateString(),
       isSeeded: true,

@@ -1,6 +1,14 @@
 
 
 const CartManager = {
+  // Reusable function to fix image paths for deployment compatibility
+  fixImagePath: function (path) {
+    if (!path) return "/gifts/Logo.png";
+    if (path.startsWith("http") || path.startsWith("data:")) return path;
+    return path.startsWith("/")
+      ? path
+      : "/" + path.replace(/^(\.\.\/|\.\/)+/, "");
+  },
   // Get cart from localStorage
   getCart: function() {
     return JSON.parse(localStorage.getItem('cart')) || [];
@@ -27,7 +35,7 @@ const CartManager = {
         id: productToId,
         name: product.name,
         price: parseInt(product.price),
-        image: product.image || '../gifts/Logo.jpeg',
+        image: this.fixImagePath(product.image) || "/gifts/Logo.png",
         quantity: parseInt(quantity),
         category: product.category || 'Gift'
       });
