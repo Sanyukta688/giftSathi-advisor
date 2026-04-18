@@ -2,6 +2,34 @@
  * Global search logic for the navbar across all pages
  */
 
+// Reusable function to fix image paths for deployment compatibility
+function fixImagePath(path) {
+  if (!path) return "/gifts/Logo.png";
+  if (path.startsWith("http") || path.startsWith("data:")) return path;
+  return path.startsWith("/")
+    ? path
+    : "/" + path.replace(/^(\.\.\/|\.\/)+/, "");
+}
+
+// Migrate existing localStorage data to fix image paths
+function migrateLocalStorageImagePaths() {
+  // Migrate cart
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+  cart = cart.map((item) => ({
+    ...item,
+    image: fixImagePath(item.image),
+  }));
+  localStorage.setItem("cart", JSON.stringify(cart));
+
+  // Migrate products
+  let products = JSON.parse(localStorage.getItem("products")) || [];
+  products = products.map((product) => ({
+    ...product,
+    image: fixImagePath(product.image),
+  }));
+  localStorage.setItem("products", JSON.stringify(products));
+}
+
 function handleGlobalSearch(event, input) {
   if (event.key === "Enter") {
     const query = input.value.trim();
@@ -9,7 +37,7 @@ function handleGlobalSearch(event, input) {
       // Determine the search page URL (relative to the current page)
       const currentPath = window.location.pathname;
       const isSubPage = currentPath.includes("/pages/");
-      const searchUrl = isSubPage ? "../index.html" : "index.html";
+      const searchUrl = isSubPage ? "/index.html" : "index.html";
 
       // Redirect to home with search query in URL
       window.location.href = `${searchUrl}?search=${encodeURIComponent(query)}`;
@@ -19,6 +47,7 @@ function handleGlobalSearch(event, input) {
 
 // On page load, check for search query in URL (for Home page)
 document.addEventListener("DOMContentLoaded", () => {
+  migrateLocalStorageImagePaths();
   const urlParams = new URLSearchParams(window.location.search);
   const searchQuery = urlParams.get("search");
   const searchInput = document.getElementById("searchInput");
@@ -77,12 +106,10 @@ function displaySearchResults(searchQuery) {
       ? '<div class="col-span-full py-12 text-center text-gray-500">No gifts found for your search. Please try a different keyword.</div>'
       : results
           .map((product) => {
-            const imagePath = product.image.startsWith("/")
-              ? product.image
-              : `/${product.image}`;
+            const imagePath = fixImagePath(product.image);
             return `
           <div class="bg-white rounded-3xl shadow-md overflow-hidden hover:shadow-xl transition">
-            <img src="${imagePath}" alt="${product.name}" class="w-full h-52 object-cover" />
+            <img src="${imagePath}" alt="${product.name}" class="w-full h-52 object-cover" onerror="this.src='/gifts/Logo.png'" />
             <div class="p-5 space-y-4">
               <div class="flex justify-between items-center">
                 <div>
@@ -134,4 +161,183 @@ function quickAddToWishlist(name, price, image = "", category = "Gift") {
   wishlist.push(item);
   localStorage.setItem("wishlist", JSON.stringify(wishlist));
   alert(`${name} added to wishlist!`);
+}
+
+let currentProduct = null;
+
+// Check if product detail view is needed (coming from shop pages)
+const urlParams = new URLSearchParams(window.location.search);
+const productId = urlParams.get("productId");
+const productName = urlParams.get("productName");
+const productPrice = urlParams.get("price");
+
+if (productId) {
+  // Load from admin products
+  const products = JSON.parse(localStorage.getItem("products")) || [];
+  currentProduct = products.find((p) => p.id == productId);
+  if (currentProduct) showProductDetail();
+} else if (productName && productPrice) {
+  // Static product from URL params
+  currentProduct = {
+    name: productName,
+    price: parseInt(productPrice),
+    category: urlParams.get("category") || "Gift",
+    image: urlParams.get("image") || "/gifts/Logo.png",
+    description:
+      urlParams.get("description") || `Premium quality ${productName}.`,
+  };
+  showProductDetail();
+} else {
+  loadCart();
+}
+
+function showProductDetail() {
+  if (!currentProduct) return;
+
+  document.getElementById("productDetailView").classList.remove("hidden");
+  document.getElementById("cartItemsView").style.display = "none";
+
+  document.getElementById("detailImage").src = fixImagePath(
+    currentProduct.image,
+  );
+  document.getElementById("detailImage").onerror = function () {
+    this.src = "/gifts/Logo.png";
+  };
+  document.getElementById("detailName").textContent = currentProduct.name;
+  document.getElementById("detailCategoryValue").textContent =
+    currentProduct.category;
+  document.getElementById("detailDescription").textContent =
+    currentProduct.description;
+  document.getElementById("detailPrice").textContent = currentProduct.price;
+  document.getElementById("summaryPrice").textContent = currentProduct.price;
+
+  updateDetailSummary();
+}
+
+function updateDetailSummary() {
+  const qty = parseInt(document.getElementById("quantityInput").value);
+  const total = currentProduct.price * qty;
+  document.getElementById("summaryQuantity").textContent = qty;
+  document.getElementById("summaryTotal").textContent = total;
+}
+
+function increaseQuantity() {
+  const input = document.getElementById("quantityInput");
+  input.value = parseInt(input.value) + 1;
+  updateDetailSummary();
+}
+
+function decreaseQuantity() {
+  const input = document.getElementById("quantityInput");
+  if (parseInt(input.value) > 1) {
+    input.value = parseInt(input.value) - 1;
+    updateDetailSummary();
+  }
+}
+
+function addCurrentProductToCart() {
+  const qty = parseInt(document.getElementById("quantityInput").value);
+  CartManager.addToCart(currentProduct, qty);
+  alert("Product added to cart!");
+  window.location.href = "cart.html";
+}
+
+function addCurrentProductToWishlist() {
+  let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+  const productId =
+    currentProduct.id || `${currentProduct.name}-${currentProduct.price}`;
+
+  if (!wishlist.includes(productId)) {
+    wishlist.push(productId);
+    localStorage.setItem("wishlist", JSON.stringify(wishlist));
+    alert("Added to wishlist!");
+  } else {
+    alert("Already in wishlist!");
+  }
+}
+
+function goBackToCart() {
+  window.location.href = "cart.html";
+}
+
+function loadCart() {
+  const cart = CartManager.getCart();
+  const container = document.getElementById("cartContainer");
+  const totals = CartManager.getTotals();
+
+  if (cart.length === 0) {
+    container.innerHTML =
+      '<p class="col-span-full text-gray-500 text-center py-12">Your cart is empty. <a href="../index.html" class="text-[#7c3aed] hover:underline">Continue shopping</a></p>';
+    document.getElementById("checkoutBtn").style.display = "none";
+    document.getElementById("totalItems").textContent = 0;
+    document.getElementById("subtotal").textContent = 0;
+    document.getElementById("totalAmount").textContent = 0;
+    updateNavbarCounts();
+    return;
+  }
+
+  container.innerHTML = cart
+    .map(
+      (item) => `
+          <div class="bg-white rounded-lg shadow-md p-4 hover:shadow-lg transition">
+            <img src="${fixImagePath(item.image)}" alt="${item.name}" class="w-full h-40 object-cover rounded-lg mb-3" onerror="this.src='/gifts/Logo.png'" />
+            <h3 class="font-semibold text-gray-800 mb-2">${item.name}</h3>
+            <p class="text-green-600 font-bold mb-2">₹${item.price}</p>
+            
+            <div class="flex items-center gap-2 mb-3">
+              <button onclick="updateCartQuantity('${item.id}', -1)" class="px-2 py-1 bg-gray-300 rounded hover:bg-gray-400">-</button>
+              <span class="px-3">${item.quantity}</span>
+              <button onclick="updateCartQuantity('${item.id}', 1)" class="px-2 py-1 bg-gray-300 rounded hover:bg-gray-400">+</button>
+            </div>
+
+            <p class="text-gray-600 text-sm mb-3">Subtotal: ₹${item.price * item.quantity}</p>
+            
+            <button onclick="removeFromCart('${item.id}')" class="w-full px-3 py-2 bg-red-500 text-white text-sm rounded hover:bg-red-600">
+              Remove
+            </button>
+          </div>
+        `,
+    )
+    .join("");
+
+  document.getElementById("totalItems").textContent = totals.totalItems;
+  document.getElementById("subtotal").textContent = totals.totalAmount;
+  document.getElementById("totalAmount").textContent = totals.totalAmount;
+  document.getElementById("checkoutBtn").style.display = "block";
+  updateNavbarCounts();
+}
+
+function updateCartQuantity(id, change) {
+  CartManager.updateQuantity(id, change);
+  loadCart();
+}
+
+function removeFromCart(id) {
+  if (confirm("Remove this item?")) {
+    CartManager.removeFromCart(id);
+    loadCart();
+  }
+}
+
+function proceedToCheckout() {
+  const totals = CartManager.getTotals();
+  alert(
+    `Order Summary:\nTotal Items: ${totals.totalItems}\nTotal Amount: ₹${totals.totalAmount}\n\nThank you for shopping!`,
+  );
+  CartManager.clearCart();
+  window.location.href = "../index.html";
+}
+
+function updateNavbarCounts() {
+  const cartCount = document.getElementById("cartCount");
+  const wishlistCount = document.getElementById("wishlistCount");
+  const totals = CartManager.getTotals();
+  const wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+
+  if (cartCount) {
+    cartCount.textContent = totals.totalItems > 0 ? totals.totalItems : "";
+  }
+  if (wishlistCount) {
+    wishlistCount.textContent = wishlist.length > 0 ? wishlist.length : "";
+  }
 }

@@ -284,7 +284,7 @@ const allProjectProducts = [
     name: "Birthday Gift",
     price: 300,
     category: "Birthday",
-    image: "./gifts/Birthday 1.avif",
+    image: "/gifts/Birthday 1.avif",
     description: "Premium Birthday gift: Birthday Gift.",
   },
   {
