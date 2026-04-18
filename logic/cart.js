@@ -1,6 +1,4 @@
-/**
- * Unified Cart Management System
- */
+
 
 const CartManager = {
   // Get cart from localStorage

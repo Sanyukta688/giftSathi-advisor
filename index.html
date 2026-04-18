@@ -19,13 +19,6 @@
             </button>
             <img src="./gifts/Logo.png" alt="giftSathi-advisor Logo" class="w-24 h-16">
             <span class="text-xl font-bold text-[#7c3aed]">giftSathi-advisor</span>
-            <div class="hidden md:flex gap-4 ml-4">
-                <a href="./index.html" class="text-sm font-medium hover:text-[#7c3aed] transition">Home</a>
-                <a href="./pages/birthday.html" class="text-sm font-medium hover:text-[#7c3aed] transition">Birthday</a>
-                <a href="./pages/anniversary.html"
-                    class="text-sm font-medium hover:text-[#7c3aed] transition">Anniversary</a>
-                <a href="./pages/wedding.html" class="text-sm font-medium hover:text-[#7c3aed] transition">Wedding</a>
-            </div>
         </div>
         <ul class="flex gap-7 items-center">
             <li><a href="./pages/wishlist.html" class="hover:text-[#7c3aed] transition duration-300 relative"><img
@@ -41,48 +34,44 @@
         </ul>
     </nav>
 
-    <!-- Main Layout -->
     <!-- Sidebar -->
     <div id="sidebar"
         class="fixed top-0 left-0 w-60 h-full bg-white shadow-lg z-50 transform -translate-x-full transition-transform duration-300 p-4 overflow-y-auto">
 
         <!-- Close -->
-        <button id="closeBtn" class="text-xl mb-4 hover:bg-gray-100 px-2 py-1 rounded transition"></button>
+        <button id="closeBtn" class="text-xl mb-4 ml-24 px-24 py-1 rounded transition"><b>×</b></button>
 
         <h2 class="text-xl font-semibold mb-4">Menu</h2>
 
-        <div class="p-3 hover:bg-gray-100 rounded cursor-pointer transition">About</div>
-        <div class="p-3 hover:bg-gray-100 rounded cursor-pointer transition">Admin Panel</div>
+
+        <div class="p-3 hover:bg-gray-100 rounded cursor-pointer transition"><a href="./pages/about.html">About</a></div>
+        <div class="p-3 hover:bg-gray-100 rounded cursor-pointer transition"><a href="./pages/dashboard.html">Admin Panel</a></div>
+        <div class="p-3 hover:bg-gray-100 rounded cursor-pointer transition"><a href="./pages/contact.html">Contact</a></div>
+    
 
         <!-- Categories -->
         <div id="categoriesBtn" class="p-3 hover:bg-gray-100 rounded cursor-pointer flex justify-between transition"
             onclick="toggleCategories()">
-            Categories <span id="catArrow"></span>
+            Categories <span id="catArrow">🔻</span>
         </div>
 
         <!-- Categories Dropdown -->
         <div id="categoriesMenu" class="hidden ml-4">
-            <div class="p-2 hover:bg-gray-100 rounded cursor-pointer">🎂Birthday Gifts</div>
-            <div class="p-2 hover:bg-gray-100 rounded cursor-pointer">💖Anniversary Gifts</div>
-            <div class="p-2 hover:bg-gray-100 rounded cursor-pointer"><a href="./pages/wedding.html">💒Wedding Gifts</a>
-            </div>
-            <div class="p-2 hover:bg-gray-100 rounded cursor-pointer">🎉Festival Gifts</div>
-            <div class="p-2 hover:bg-gray-100 rounded cursor-pointer">💑Couple Gifts</div>
-            <div class="p-2 hover:bg-gray-100 rounded cursor-pointer">🎁General Gifts</div>
-            <div class="p-2 hover:bg-gray-100 rounded cursor-pointer">👶Baby Gifts</div>
-            <div class="p-2 hover:bg-gray-100 rounded cursor-pointer">🤝Friendship Gifts</div>
-            <div class="p-2 hover:bg-gray-100 rounded cursor-pointer">🏠Home Gifts</div>
-            <div class="p-2 hover:bg-gray-100 rounded cursor-pointer">🎨Creative Gifts</div>
-            <div class="p-2 hover:bg-gray-100 rounded cursor-pointer">👩‍💻Tech Gifts</div>
-            <div class="p-2 hover:bg-gray-100 rounded cursor-pointer">🤸‍♀️Fitness Gifts</div>
-            <div class="p-2 hover:bg-gray-100 rounded cursor-pointer">🚇Travel Gifts</div>
+            <div class="p-2 hover:bg-gray-100 rounded cursor-pointer"><a href="./pages/birthday.html">🎂Birthday Gifts</a></div>
+            <div class="p-2 hover:bg-gray-100 rounded cursor-pointer"><a href="./pages/anniversary.html">💖Anniversary Gifts</a></div>
+            <div class="p-2 hover:bg-gray-100 rounded cursor-pointer"><a href="./pages/wedding.html">💒Wedding Gifts</a></div>
+            <div class="p-2 hover:bg-gray-100 rounded cursor-pointer"><a href="./pages/festival.html">🎉Festival Gifts</a></div>
+            <div class="p-2 hover:bg-gray-100 rounded cursor-pointer"><a href="./pages/couple.html">💑Couple Gifts</a></div>
+            <div class="p-2 hover:bg-gray-100 rounded cursor-pointer"><a href="./pages/general.html">🎁General Gifts</a></div>
+            <div class="p-2 hover:bg-gray-100 rounded cursor-pointer"><a href="./pages/baby.html">👶Baby Gifts</a></div>
+            <div class="p-2 hover:bg-gray-100 rounded cursor-pointer"><a href="./pages/friendship.html">🤝Friendship Gifts</a></div>
+            <div class="p-2 hover:bg-gray-100 rounded cursor-pointer"><a href="./pages/home.html">🏠Home Gifts</a></div>
+            <div class="p-2 hover:bg-gray-100 rounded cursor-pointer"><a href="./pages/creative.html">🎨Creative Gifts</a></div>
+            <div class="p-2 hover:bg-gray-100 rounded cursor-pointer"><a href="./pages/tech.html">👩‍💻Tech Gifts</a></div>
+            <div class="p-2 hover:bg-gray-100 rounded cursor-pointer"><a href="./pages/fitness.html">🤸‍♀️Fitness Gifts</a></div>
+            <div class="p-2 hover:bg-gray-100 rounded cursor-pointer"><a href="./pages/travel.html">🚇Travel Gifts</a></div>
         </div>
-
     </div>
-
-    </div>
-
-
 
     <!-- Hero Section -->
     <section class="relative flex-1 h-[600px] flex items-center justify-center overflow-hidden">
@@ -123,7 +112,7 @@
 
         <div class="flex overflow-x-auto gap-4 no-scrollbar px-4 pb-2">
             <!-- Birthday -->
-            <a href="pages/birthday.html" class="block">
+            <a href="./pages/birthday.html" class="block">
                 <div class="flex flex-col items-center min-w-[100px] cursor-pointer">
                     <img src="./gifts/Birthday Gifts.avif"
                         class="w-20 h-20 rounded-full object-cover border-2 border-purple-600 hover:border-purple-600 transition shadow-lg">
@@ -132,7 +121,7 @@
             </a>
 
             <!-- Anniversary -->
-            <a href="pages/anniversary.html" class="block">
+            <a href="./pages/anniversary.html" class="block">
                 <div class="flex flex-col items-center min-w-[100px] cursor-pointer">
                     <img src="./gifts/Anniversary Gifts.avif"
                         class="w-20 h-20 rounded-full object-cover border-2 border-purple-600 hover:border-purple-600 transition shadow-lg">
@@ -141,7 +130,7 @@
             </a>
 
             <!-- Wedding -->
-            <a href="pages/wedding.html" class="block">
+            <a href="./pages/wedding.html" class="block">
                 <div class="flex flex-col items-center min-w-[100px] cursor-pointer">
                     <img src="./gifts/Couple Gifts.avif"
                         class="w-20 h-20 rounded-full object-cover border-2 border-purple-600 hover:border-purple-600 transition shadow-lg">
@@ -150,74 +139,94 @@
             </a>
 
             <!-- Festival -->
+            <a href="./pages/festival.html" class="block">
             <div class="flex flex-col items-center min-w-[100px] cursor-pointer" onclick="jumpToCategory('Festival')">
                 <img src="./gifts/Festival Gifts.avif"
                     class="w-20 h-20 rounded-full object-cover border-2 border-purple-600 hover:border-purple-600 transition shadow-lg">
                 <p class="text-sm font-medium mt-2">Festival</p>
             </div>
+            </a>
 
             <!-- Couple -->
+            <a href="./pages/couple.html" class="block">
             <div class="flex flex-col items-center min-w-[100px] cursor-pointer" onclick="jumpToCategory('Couple')">
                 <img src="./gifts/Couple Gifts.avif"
                     class="w-20 h-20 rounded-full object-cover border-2 border-purple-600 hover:border-purple-600 transition shadow-lg">
                 <p class="text-sm font-medium mt-2">Couple</p>
             </div>
+            </a>
 
             <!-- General -->
+            <a href="./pages/general.html" class="block">
             <div class="flex flex-col items-center min-w-[100px] cursor-pointer" onclick="jumpToCategory('General')">
                 <img src="./gifts/General Gifts.avif"
                     class="w-20 h-20 rounded-full object-cover border-2 border-purple-600 hover:border-purple-600 transition shadow-lg">
                 <p class="text-sm font-medium mt-2">General</p>
             </div>
+            </a>
 
             <!-- Baby -->
+            <a href="./pages/baby.html" class="block">
             <div class="flex flex-col items-center min-w-[100px] cursor-pointer" onclick="jumpToCategory('Baby')">
                 <img src="./gifts/Baby Gifts.avif"
                     class="w-20 h-20 rounded-full object-cover border-2 border-purple-600 hover:border-purple-600 transition shadow-lg">
                 <p class="text-sm font-medium mt-2">Baby</p>
             </div>
+            </a>
 
             <!-- Friendship -->
+            <a href="./pages/friendship.html" class="block">
             <div class="flex flex-col items-center min-w-[100px] cursor-pointer" onclick="jumpToCategory('Friendship')">
                 <img src="./gifts/Friendship Gifts.avif"
                     class="w-20 h-20 rounded-full object-cover border-2 border-purple-600 hover:border-purple-600 transition shadow-lg">
                 <p class="text-sm font-medium mt-2">Friendship</p>
             </div>
+            </a>
 
             <!-- Home -->
+            <a href="./pages/home.html" class="block">
             <div class="flex flex-col items-center min-w-[100px] cursor-pointer" onclick="jumpToCategory('Home')">
                 <img src="./gifts/Home Gifts.avif"
                     class="w-20 h-20 rounded-full object-cover border-2 border-purple-600 hover:border-purple-600 transition shadow-lg">
                 <p class="text-sm font-medium mt-2">Home</p>
             </div>
+            </a>
 
             <!-- Creative -->
+            <a href="./pages/creative.html" class="block">
             <div class="flex flex-col items-center min-w-[100px] cursor-pointer" onclick="jumpToCategory('Creative')">
                 <img src="./gifts/Creative Gifts.avif"
                     class="w-20 h-20 rounded-full object-cover border-2 border-purple-600 hover:border-purple-600 transition shadow-lg">
                 <p class="text-sm font-medium mt-2">Creative</p>
             </div>
+            </a>
 
             <!-- Tech -->
+            <a href="./pages/tech.html" class="block">
             <div class="flex flex-col items-center min-w-[100px] cursor-pointer" onclick="jumpToCategory('Tech')">
                 <img src="./gifts/Tech Gifts.avif"
                     class="w-20 h-20 rounded-full object-cover border-2 border-purple-600 hover:border-purple-600 transition shadow-lg">
                 <p class="text-sm font-medium mt-2">Tech</p>
             </div>
+            </a>
 
             <!-- Fitness -->
+            <a href="./pages/fitness.html" class="block">
             <div class="flex flex-col items-center min-w-[100px] cursor-pointer" onclick="jumpToCategory('Fitness')">
                 <img src="./gifts/Fitness Gifts.avif"
                     class="w-20 h-20 rounded-full object-cover border-2 border-purple-600 hover:border-purple-600 transition shadow-lg">
                 <p class="text-sm font-medium mt-2">Fitness</p>
             </div>
+            </a>
 
             <!-- Travel -->
+            <a href="./pages/travel.html" class="block">
             <div class="flex flex-col items-center min-w-[100px] cursor-pointer" onclick="jumpToCategory('Travel')">
                 <img src="./gifts/Travel Gifts.avif"
                     class="w-20 h-20 rounded-full object-cover border-2 border-purple-600 hover:border-purple-600 transition shadow-lg">
                 <p class="text-sm font-medium mt-2">Travel</p>
             </div>
+            </a>
         </div>
     </div>
 
@@ -226,11 +235,9 @@
         <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-6">
             <div>
                 <h2 id="searchResultsTitle" class="text-3xl font-semibold text-gray-900">Search Results</h2>
-                <p id="searchResultsSub" class="text-gray-500 mt-1">Use the search bar to find gift ideas by name,
-                    category, or keyword.</p>
+                <p id="searchResultsSub" class="text-gray-500 mt-1">Use the search bar to find gift ideas by name, category, or keyword.</p>
             </div>
-            <button onclick="clearSearchResults()" class="text-[#7c3aed] font-semibold hover:text-purple-700">Clear
-                search</button>
+            <button onclick="clearSearchResults()" class="text-[#7c3aed] font-semibold hover:text-purple-700">Clear search</button>
         </div>
 
         <div id="searchResultsContainer" class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3"></div>
@@ -239,174 +246,146 @@
     <!-- Suggested Gifts -->
     <section class="p-6 bg-white mt-10 rounded-3xl shadow-lg">
         <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-6">
-            <div>
-                <h2 class="text-3xl font-semibold text-gray-900">Suggested Gifts</h2>
+            <div class="bg-white p-6 mt-6 text-center max-w-xl mx-auto">
+                <h2 class="text-3xl font-semibold">Suggested Gifts</h2>
                 <p class="text-gray-500 mt-1">Trending gift ideas with quick add-to-cart and wishlist support.</p>
             </div>
-            <span class="text-sm text-gray-500">8 trending gifts</span>
+        </div>
         </div>
 
         <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            <div class="bg-white rounded-3xl shadow-md overflow-hidden hover:shadow-xl transition">
+            <div class="bg-white rounded-3xl overflow-hidden border border-transparent shadow-[0_10px_25px_rgba(0,0,0,0.15)] hover:shadow-[0_25px_60px_rgba(0,0,0,0.35)] hover:border-purple-500 hover:-translate-y-2 transition duration-300">
                 <img src="/gifts/Creative 1.avif" alt="Creative Gift Set" class="w-full h-52 object-cover">
                 <div class="p-5 space-y-4">
                     <div class="flex justify-between items-center">
                         <div>
-                            <h3 class="text-lg font-semibold">Creative Gift Set</h3>
+                            <h3 class="text-lg font-semibold">Creative Cards</h3>
                             <p class="text-gray-500 text-sm">Art & stationery bundle</p>
                         </div>
-                        <button
-                            onclick="quickAddToWishlist('Creative Gift Set', 499, '/gifts/Creative 1.avif', 'Creative')"
-                            class="text-xl">❤️</button>
+                        <button onclick="quickAddToWishlist('Creative Gift Set', 499, '/gifts/Creative 1.avif', 'Creative')" class="text-xl">❤️</button>
                     </div>
                     <div class="flex items-center justify-between">
                         <span class="text-2xl font-bold text-green-600">₹499</span>
-                        <button onclick="quickAddToCart('Creative Gift Set', 499, '/gifts/Creative 1.avif', 'Creative')"
-                            class="bg-[#7c3aed] text-white px-3 py-2 rounded-2xl text-sm hover:bg-purple-700 transition">Add
-                            to Cart</button>
+                        <button onclick="quickAddToCart('Creative Gift Set', 499, '/gifts/Creative 1.avif', 'Creative')" class="bg-[#7c3aed] text-white px-3 py-2 rounded-2xl text-sm hover:bg-purple-700 transition">Add to Cart</button>
                     </div>
                 </div>
             </div>
 
-            <div class="bg-white rounded-3xl shadow-md overflow-hidden hover:shadow-xl transition">
+            <div class="bg-white rounded-3xl overflow-hidden border border-transparent shadow-[0_10px_25px_rgba(0,0,0,0.15)] hover:shadow-[0_25px_60px_rgba(0,0,0,0.35)] hover:border-purple-500 hover:-translate-y-2 transition duration-300">
                 <img src="/gifts/Tech 1.avif" alt="Tech Gadget" class="w-full h-52 object-cover">
                 <div class="p-5 space-y-4">
                     <div class="flex justify-between items-center">
                         <div>
-                            <h3 class="text-lg font-semibold">Tech Gadget</h3>
+                            <h3 class="text-lg font-semibold">Headphone</h3>
                             <p class="text-gray-500 text-sm">Smart gift for tech lovers</p>
                         </div>
-                        <button onclick="quickAddToWishlist('Tech Gadget', 799, '/gifts/Tech 1.avif', 'Tech')"
-                            class="text-xl">❤️</button>
+                        <button onclick="quickAddToWishlist('Tech Gadget', 799, '/gifts/Tech 1.avif', 'Tech')" class="text-xl">❤️</button>
                     </div>
                     <div class="flex items-center justify-between">
                         <span class="text-2xl font-bold text-green-600">₹799</span>
-                        <button onclick="quickAddToCart('Tech Gadget', 799, '/gifts/Tech 1.avif', 'Tech')"
-                            class="bg-[#7c3aed] text-white px-3 py-2 rounded-2xl text-sm hover:bg-purple-700 transition">Add
-                            to Cart</button>
+                        <button onclick="quickAddToCart('Tech Gadget', 799, '/gifts/Tech 1.avif', 'Tech')" class="bg-[#7c3aed] text-white px-3 py-2 rounded-2xl text-sm hover:bg-purple-700 transition">Add to Cart</button>
                     </div>
                 </div>
             </div>
 
-            <div class="bg-white rounded-3xl shadow-md overflow-hidden hover:shadow-xl transition">
+            <div class="bg-white rounded-3xl overflow-hidden border border-transparent shadow-[0_10px_25px_rgba(0,0,0,0.15)] hover:shadow-[0_25px_60px_rgba(0,0,0,0.35)] hover:border-purple-500 hover:-translate-y-2 transition duration-300">                
                 <img src="/gifts/Home 1.avif" alt="Home Decor" class="w-full h-52 object-cover">
                 <div class="p-5 space-y-4">
                     <div class="flex justify-between items-center">
                         <div>
-                            <h3 class="text-lg font-semibold">Home Decor</h3>
+                            <h3 class="text-lg font-semibold">Hanging Lamp</h3>
                             <p class="text-gray-500 text-sm">Elegant living room accent</p>
                         </div>
-                        <button onclick="quickAddToWishlist('Home Decor', 599, '/gifts/Home 1.avif', 'Home')"
-                            class="text-xl">❤️</button>
+                        <button onclick="quickAddToWishlist('Home Decor', 799, '/gifts/Home 1.avif', 'Home')" class="text-xl">❤️</button>
                     </div>
                     <div class="flex items-center justify-between">
-                        <span class="text-2xl font-bold text-green-600">₹599</span>
-                        <button onclick="quickAddToCart('Home Decor', 599, '/gifts/Home 1.avif', 'Home')"
-                            class="bg-[#7c3aed] text-white px-3 py-2 rounded-2xl text-sm hover:bg-purple-700 transition">Add
-                            to Cart</button>
+                        <span class="text-2xl font-bold text-green-600">₹799</span>
+                        <button onclick="quickAddToCart('Home Decor', 799, '/gifts/Home 1.avif', 'Home')" class="bg-[#7c3aed] text-white px-3 py-2 rounded-2xl text-sm hover:bg-purple-700 transition">Add to Cart</button>
                     </div>
                 </div>
             </div>
 
-            <div class="bg-white rounded-3xl shadow-md overflow-hidden hover:shadow-xl transition">
+            <div class="bg-white rounded-3xl overflow-hidden border border-transparent shadow-[0_10px_25px_rgba(0,0,0,0.15)] hover:shadow-[0_25px_60px_rgba(0,0,0,0.35)] hover:border-purple-500 hover:-translate-y-2 transition duration-300">
                 <img src="/gifts/Fitness 1.avif" alt="Fitness Kit" class="w-full h-52 object-cover">
                 <div class="p-5 space-y-4">
                     <div class="flex justify-between items-center">
                         <div>
-                            <h3 class="text-lg font-semibold">Fitness Kit</h3>
+                            <h3 class="text-lg font-semibold">Fitness Tracker</h3>
                             <p class="text-gray-500 text-sm">Active lifestyle essentials</p>
                         </div>
-                        <button onclick="quickAddToWishlist('Fitness Kit', 999, '/gifts/Fitness 1.avif', 'Fitness')"
-                            class="text-xl">❤️</button>
+                        <button onclick="quickAddToWishlist('Fitness Kit', 699, '/gifts/Fitness 1.avif', 'Fitness')" class="text-xl">❤️</button>
                     </div>
                     <div class="flex items-center justify-between">
-                        <span class="text-2xl font-bold text-green-600">₹999</span>
-                        <button onclick="quickAddToCart('Fitness Kit', 999, '/gifts/Fitness 1.avif', 'Fitness')"
-                            class="bg-[#7c3aed] text-white px-3 py-2 rounded-2xl text-sm hover:bg-purple-700 transition">Add
-                            to Cart</button>
+                        <span class="text-2xl font-bold text-green-600">₹699</span>
+                        <button onclick="quickAddToCart('Fitness Kit', 699, '/gifts/Fitness 1.avif', 'Fitness')" class="bg-[#7c3aed] text-white px-3 py-2 rounded-2xl text-sm hover:bg-purple-700 transition">Add to Cart</button>
                     </div>
                 </div>
             </div>
 
-            <div class="bg-white rounded-3xl shadow-md overflow-hidden hover:shadow-xl transition">
-                <img src="/gifts/Mug 1.avif" alt="Friendship Mug" class="w-full h-52 object-cover">
+            <div class="bg-white rounded-3xl overflow-hidden border border-transparent shadow-[0_10px_25px_rgba(0,0,0,0.15)] hover:shadow-[0_25px_60px_rgba(0,0,0,0.35)] hover:border-purple-500 hover:-translate-y-2 transition duration-300">
+                <img src="./gifts/Mug 1.avif" alt="Friendship Mug" class="w-full h-52 object-cover">
                 <div class="p-5 space-y-4">
                     <div class="flex justify-between items-center">
                         <div>
-                            <h3 class="text-lg font-semibold">Friendship Mug</h3>
-                            <p class="text-gray-500 text-sm">Personalized coffee mug</p>
+                            <h3 class="text-lg font-semibold">Mug</h3>
+                            <p class="text-gray-500 text-sm">White stylish Coffee mug</p>
                         </div>
-                        <button onclick="quickAddToWishlist('Friendship Mug', 299, '/gifts/Mug 1.avif', 'Friendship')"
-                            class="text-xl">❤️</button>
+                        <button onclick="quickAddToWishlist('Friendship Mug', 299, '/gifts/Mug 1.avif', 'Friendship')" class="text-xl">❤️</button>
                     </div>
                     <div class="flex items-center justify-between">
                         <span class="text-2xl font-bold text-green-600">₹299</span>
-                        <button onclick="quickAddToCart('Friendship Mug', 299, '/gifts/Mug 1.avif', 'Friendship')"
-                            class="bg-[#7c3aed] text-white px-3 py-2 rounded-2xl text-sm hover:bg-purple-700 transition">Add
-                            to Cart</button>
+                        <button onclick="quickAddToCart('Friendship Mug', 299, '/gifts/Mug 1.avif', 'Friendship')" class="bg-[#7c3aed] text-white px-3 py-2 rounded-2xl text-sm hover:bg-purple-700 transition">Add to Cart</button>
                     </div>
                 </div>
             </div>
 
-            <div class="bg-white rounded-3xl shadow-md overflow-hidden hover:shadow-xl transition">
+            <div class="bg-white rounded-3xl overflow-hidden border border-transparent shadow-[0_10px_25px_rgba(0,0,0,0.15)] hover:shadow-[0_25px_60px_rgba(0,0,0,0.35)] hover:border-purple-500 hover:-translate-y-2 transition duration-300">
                 <img src="/gifts/Travel 1.avif" alt="Travel Kit" class="w-full h-52 object-cover">
                 <div class="p-5 space-y-4">
                     <div class="flex justify-between items-center">
                         <div>
-                            <h3 class="text-lg font-semibold">Travel Kit</h3>
+                            <h3 class="text-lg font-semibold">Travel Bag</h3>
                             <p class="text-gray-500 text-sm">Perfect gift for explorers</p>
                         </div>
-                        <button onclick="quickAddToWishlist('Travel Kit', 899, '/gifts/Travel 1.avif', 'Travel')"
-                            class="text-xl">❤️</button>
+                        <button onclick="quickAddToWishlist('Travel Kit', 699, '/gifts/Travel 1.avif', 'Travel')" class="text-xl">❤️</button>
                     </div>
                     <div class="flex items-center justify-between">
-                        <span class="text-2xl font-bold text-green-600">₹899</span>
-                        <button onclick="quickAddToCart('Travel Kit', 899, '/gifts/Travel 1.avif', 'Travel')"
-                            class="bg-[#7c3aed] text-white px-3 py-2 rounded-2xl text-sm hover:bg-purple-700 transition">Add
-                            to Cart</button>
+                        <span class="text-2xl font-bold text-green-600">₹699</span>
+                        <button onclick="quickAddToCart('Travel Kit', 699, '/gifts/Travel 1.avif', 'Travel')" class="bg-[#7c3aed] text-white px-3 py-2 rounded-2xl text-sm hover:bg-purple-700 transition">Add to Cart</button>
                     </div>
                 </div>
             </div>
 
-            <div class="bg-white rounded-3xl shadow-md overflow-hidden hover:shadow-xl transition">
+            <div class="bg-white rounded-3xl overflow-hidden border border-transparent shadow-[0_10px_25px_rgba(0,0,0,0.15)] hover:shadow-[0_25px_60px_rgba(0,0,0,0.35)] hover:border-purple-500 hover:-translate-y-2 transition duration-300">
                 <img src="/gifts/Anniversary 2.avif" alt="Anniversary Rose Box" class="w-full h-52 object-cover">
                 <div class="p-5 space-y-4">
                     <div class="flex justify-between items-center">
                         <div>
-                            <h3 class="text-lg font-semibold">Anniversary Rose Box</h3>
-                            <p class="text-gray-500 text-sm">Romantic gift set</p>
+                            <h3 class="text-lg font-semibold">Photo Frame</h3>
+                            <p class="text-gray-500 text-sm">Romantic gift set </p>
                         </div>
-                        <button
-                            onclick="quickAddToWishlist('Anniversary Rose Box', 649, '/gifts/Anniversary 2.avif', 'Anniversary')"
-                            class="text-xl">❤️</button>
+                        <button onclick="quickAddToWishlist('Anniversary Rose Box', 349, '/gifts/Anniversary 2.avif', 'Anniversary')" class="text-xl">❤️</button>
                     </div>
                     <div class="flex items-center justify-between">
-                        <span class="text-2xl font-bold text-green-600">₹649</span>
-                        <button
-                            onclick="quickAddToCart('Anniversary Rose Box', 649, '/gifts/Anniversary 2.avif', 'Anniversary')"
-                            class="bg-[#7c3aed] text-white px-3 py-2 rounded-2xl text-sm hover:bg-purple-700 transition">Add
-                            to Cart</button>
+                        <span class="text-2xl font-bold text-green-600">₹349</span>
+                        <button onclick="quickAddToCart('Anniversary Rose Box', 349, '/gifts/Anniversary 2.avif', 'Anniversary')" class="bg-[#7c3aed] text-white px-3 py-2 rounded-2xl text-sm hover:bg-purple-700 transition">Add to Cart</button>
                     </div>
                 </div>
             </div>
 
-            <div class="bg-white rounded-3xl shadow-md overflow-hidden hover:shadow-xl transition">
-                <img src="/gifts/Couple Gift 4.avif" alt="Wedding Frame" class="w-full h-52 object-cover">
+            <div class="bg-white rounded-3xl overflow-hidden border border-transparent shadow-[0_10px_25px_rgba(0,0,0,0.15)] hover:shadow-[0_25px_60px_rgba(0,0,0,0.35)] hover:border-purple-500 hover:-translate-y-2 transition duration-300">
+                <img src="/gifts/Couple Gift 4.avif" alt="Couple Ring" class="w-full h-52 object-cover">
                 <div class="p-5 space-y-4">
                     <div class="flex justify-between items-center">
                         <div>
-                            <h3 class="text-lg font-semibold">Wedding Frame</h3>
+                            <h3 class="text-lg font-semibold">Couple Rings</h3>
                             <p class="text-gray-500 text-sm">Keepsake for newlyweds</p>
                         </div>
-                        <button
-                            onclick="quickAddToWishlist('Wedding Frame', 1099, '/gifts/Couple Gift 4.avif', 'Wedding')"
-                            class="text-xl">❤️</button>
+                        <button onclick="quickAddToWishlist('Wedding Frame', 1099, '/gifts/Couple Gift 4.avif', 'Wedding')" class="text-xl">❤️</button>
                     </div>
                     <div class="flex items-center justify-between">
                         <span class="text-2xl font-bold text-green-600">₹1099</span>
-                        <button onclick="quickAddToCart('Wedding Frame', 1099, '/gifts/Couple Gift 4.avif', 'Wedding')"
-                            class="bg-[#7c3aed] text-white px-3 py-2 rounded-2xl text-sm hover:bg-purple-700 transition">Add
-                            to Cart</button>
+                        <button onclick="quickAddToCart('Wedding Frame', 1099, '/gifts/Couple Gift 4.avif', 'Wedding')" class="bg-[#7c3aed] text-white px-3 py-2 rounded-2xl text-sm hover:bg-purple-700 transition">Add to Cart</button>
                     </div>
                 </div>
             </div>

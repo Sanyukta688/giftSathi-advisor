@@ -11,154 +11,36 @@
   <!-- NAVBAR -->
   <nav class="bg-white shadow-md p-3 flex justify-between items-center sticky top-0 z-50">
     <div class="flex items-center gap-6">
-      <img src="../gifts/Logo.jpeg" alt="Logo" class="w-24 h-8">
-      <div class="relative hidden md:block">
-        <input type="text" placeholder="Global search..." onkeyup="handleGlobalSearch(event, this)"
-          class="pl-10 pr-4 py-1.5 bg-gray-100 rounded-full text-sm w-64 outline-none focus:ring-2 focus:ring-[#7c3aed] transition-all">
-        <span class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">🔍</span>
-      </div>
+      <button onclick="goBack()"
+        class="flex items-center gap-1 px-3 py-1 rounded-lg border hover:bg-gray-100 transition">
+        <span class="text-lg">←</span>
+        <span class="hidden sm:inline text-sm font-medium"></span>
+      </button>
+      <img src="../gifts/Logo.png" alt="giftSathi-advisor Logo" class="w-24 h-16">
+      <span class="text-xl font-bold text-[#7c3aed]">giftSathi-advisor</span>
     </div>
-    <ul class="flex gap-8 font-medium text-sm items-center">
-      <li><a href="../index.html" class="hover:text-[#7c3aed] transition duration-300">Home</a></li>
-      <li><a href="birthday.html" class="hover:text-[#7c3aed] transition duration-300">Birthday</a></li>
-      <li><a href="anniversary.html" class="hover:text-[#7c3aed] transition duration-300">Anniversary</a></li>
-      <li><a href="wedding.html" class="hover:text-[#7c3aed] transition duration-300">Wedding</a></li>
-      <li><a href="wishlist.html" class="hover:text-[#7c3aed] transition duration-300">❤️ Wishlist</a></li>
-      <li><a href="cart.html" class="hover:text-[#7c3aed] transition duration-300">🛒 Cart</a></li>
+    <ul class="flex gap-7 items-center">
+      <li><a href="./wishlist.html" class="hover:text-[#7c3aed] transition duration-300 relative"><img
+            src="../gifts/Wishlist Logo.png" class="w-6"><span id="wishlistCount"
+            class="absolute -top-2 -right-2 text-xs bg-red-500 text-white px-1.5 rounded-full"></span></a>
+      </li>
+      <li><a href="./cart.html" class="hover:text-[#7c3aed] transition duration-300 relative"><img
+            src="../gifts/Cart Logo.png" class="w-6"><span id="cartCount"
+            class="absolute -top-2 -right-2 text-xs bg-red-500 text-white px-1.5 rounded-full"></span></a>
+      </li>
+      <li><a href="./login.html" class="hover:text-[#7c3aed] transition duration-300"><img
+            src="../gifts/Account Logo.png" class="w-6"></a></li>
     </ul>
   </nav>
 
   <!-- MAIN -->
-  <div class="p-6 grid grid-cols-4 gap-6">
-    <!-- Travel Gifts -->
-    <div class="bg-white rounded-2xl shadow-md overflow-hidden">
-      <div class="relative">
-        <img src="/gifts/Travel 1.avif" class="w-full h-48 object-cover" />
-        <button onclick="toggleLike(this)" class="absolute top-2 right-2 bg-white p-2 rounded-full shadow">🤍</button>
-      </div>
-      <div class="p-3">
-        <h2>Travel Gift</h2>
-        <p class="text-green-600 font-bold">₹700</p>
-        <button onclick="addToCart('Travel Gift', 700)" class="mt-2 w-full bg-black text-white py-1 rounded-lg">Add to
-          Cart</button>
-      </div>
-    </div>
-
-    <div class="bg-white rounded-2xl shadow-md overflow-hidden">
-      <div class="relative">
-        <img src="/gifts/Travel 2.avif" class="w-full h-48 object-cover" />
-        <button onclick="toggleLike(this)" class="absolute top-2 right-2 bg-white p-2 rounded-full shadow">🤍</button>
-      </div>
-      <div class="p-3">
-        <h2>Travel Gift</h2>
-        <p class="text-green-600 font-bold">₹750</p>
-        <button onclick="addToCart('Travel Gift', 750)" class="mt-2 w-full bg-black text-white py-1 rounded-lg">Add to
-          Cart</button>
-      </div>
-    </div>
-
-    <div class="bg-white rounded-2xl shadow-md overflow-hidden">
-      <div class="relative">
-        <img src="/gifts/Travel 3.avif" class="w-full h-48 object-cover" />
-        <button onclick="toggleLike(this)" class="absolute top-2 right-2 bg-white p-2 rounded-full shadow">🤍</button>
-      </div>
-      <div class="p-3">
-        <h2>Travel Gift</h2>
-        <p class="text-green-600 font-bold">₹800</p>
-        <button onclick="addToCart('Travel Gift', 800)" class="mt-2 w-full bg-black text-white py-1 rounded-lg">Add to
-          Cart</button>
-      </div>
-    </div>
-
-    <div class="bg-white rounded-2xl shadow-md overflow-hidden">
-      <div class="relative">
-        <img src="/gifts/Travel 4.avif" class="w-full h-48 object-cover" />
-        <button onclick="toggleLike(this)" class="absolute top-2 right-2 bg-white p-2 rounded-full shadow">🤍</button>
-      </div>
-      <div class="p-3">
-        <h2>Travel Gift</h2>
-        <p class="text-green-600 font-bold">₹850</p>
-        <button onclick="addToCart('Travel Gift', 850)" class="mt-2 w-full bg-black text-white py-1 rounded-lg">Add to
-          Cart</button>
-      </div>
-    </div>
-
-    <div class="bg-white rounded-2xl shadow-md overflow-hidden">
-      <div class="relative">
-        <img src="/gifts/Travel 5.avif" class="w-full h-48 object-cover" />
-        <button onclick="toggleLike(this)" class="absolute top-2 right-2 bg-white p-2 rounded-full shadow">🤍</button>
-      </div>
-      <div class="p-3">
-        <h2>Travel Gift</h2>
-        <p class="text-green-600 font-bold">₹900</p>
-        <button onclick="addToCart('Travel Gift', 900)" class="mt-2 w-full bg-black text-white py-1 rounded-lg">Add to
-          Cart</button>
-      </div>
-    </div>
-
-    <div class="bg-white rounded-2xl shadow-md overflow-hidden">
-      <div class="relative">
-        <img src="/gifts/Travel 6.avif" class="w-full h-48 object-cover" />
-        <button onclick="toggleLike(this)" class="absolute top-2 right-2 bg-white p-2 rounded-full shadow">🤍</button>
-      </div>
-      <div class="p-3">
-        <h2>Travel Gift</h2>
-        <p class="text-green-600 font-bold">₹950</p>
-        <button onclick="addToCart('Travel Gift', 950)" class="mt-2 w-full bg-black text-white py-1 rounded-lg">Add to
-          Cart</button>
-      </div>
-    </div>
-
-    <div class="bg-white rounded-2xl shadow-md overflow-hidden">
-      <div class="relative">
-        <img src="/gifts/Travel 7.avif" class="w-full h-48 object-cover" />
-        <button onclick="toggleLike(this)" class="absolute top-2 right-2 bg-white p-2 rounded-full shadow">🤍</button>
-      </div>
-      <div class="p-3">
-        <h2>Travel Gift</h2>
-        <p class="text-green-600 font-bold">₹1000</p>
-        <button onclick="addToCart('Travel Gift', 1000)" class="mt-2 w-full bg-black text-white py-1 rounded-lg">Add to
-          Cart</button>
-      </div>
-    </div>
-
-    <div class="bg-white rounded-2xl shadow-md overflow-hidden">
-      <div class="relative">
-        <img src="/gifts/Travel 8.avif" class="w-full h-48 object-cover" />
-        <button onclick="toggleLike(this)" class="absolute top-2 right-2 bg-white p-2 rounded-full shadow">🤍</button>
-      </div>
-      <div class="p-3">
-        <h2>Travel Gift</h2>
-        <p class="text-green-600 font-bold">₹1050</p>
-        <button onclick="addToCart('Travel Gift', 1050)" class="mt-2 w-full bg-black text-white py-1 rounded-lg">Add to
-          Cart</button>
-      </div>
-    </div>
-
-    <div class="bg-white rounded-2xl shadow-md overflow-hidden">
-      <div class="relative">
-        <img src="/gifts/Travel 9.avif" class="w-full h-48 object-cover" />
-        <button onclick="toggleLike(this)" class="absolute top-2 right-2 bg-white p-2 rounded-full shadow">🤍</button>
-      </div>
-      <div class="p-3">
-        <h2>Travel Gift</h2>
-        <p class="text-green-600 font-bold">₹1100</p>
-        <button onclick="addToCart('Travel Gift', 1100)" class="mt-2 w-full bg-black text-white py-1 rounded-lg">Add to
-          Cart</button>
-      </div>
-    </div>
-
-    <div class="bg-white rounded-2xl shadow-md overflow-hidden">
-      <div class="relative">
-        <img src="/gifts/Travel 10.avif" class="w-full h-48 object-cover" />
-        <button onclick="toggleLike(this)" class="absolute top-2 right-2 bg-white p-2 rounded-full shadow">🤍</button>
-      </div>
-      <div class="p-3">
-        <h2>Travel Gift</h2>
-        <p class="text-green-600 font-bold">₹1150</p>
-        <button onclick="addToCart('Travel Gift', 1150)" class="mt-2 w-full bg-black text-white py-1 rounded-lg">Add to
-          Cart</button>
-      </div>
+  <div class="p-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8" id="productContainer">
+    <!-- Products will be loaded dynamically -->
+    <div class="col-span-full py-24 text-center">
+      <div
+        class="animate-spin inline-block w-8 h-8 border-[3px] border-current border-t-transparent text-[#7c3aed] rounded-full"
+        role="status"></div>
+      <p class="mt-4 text-gray-500 font-medium">Discovering perfect gifts...</p>
     </div>
   </div>
 
@@ -176,6 +58,10 @@
 
     function addToCart(name, price) {
       alert(name + " added to cart - ₹" + price);
+    }
+
+    function goBack() {
+      window.history.back();
     }
   </script>
 </body>

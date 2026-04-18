@@ -11,20 +11,25 @@
   <!-- NAVBAR -->
   <nav class="bg-white shadow-md p-3 flex justify-between items-center sticky top-0 z-50">
     <div class="flex items-center gap-6">
-      <img src="../gifts/Logo.jpeg" alt="Logo" class="w-24 h-8">
-      <div class="relative hidden md:block">
-        <input type="text" placeholder="Global search..." onkeyup="handleGlobalSearch(event, this)"
-          class="pl-10 pr-4 py-1.5 bg-gray-100 rounded-full text-sm w-64 outline-none focus:ring-2 focus:ring-[#7c3aed] transition-all">
-        <span class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">🔍</span>
-      </div>
+      <button onclick="goBack()"
+        class="flex items-center gap-1 px-3 py-1 rounded-lg border hover:bg-gray-100 transition">
+        <span class="text-lg">←</span>
+        <span class="hidden sm:inline text-sm font-medium"></span>
+      </button>
+      <img src="../gifts/Logo.png" alt="giftSathi-advisor Logo" class="w-24 h-16">
+      <span class="text-xl font-bold text-[#7c3aed]">giftSathi-advisor</span>
     </div>
-    <ul class="flex gap-8 font-medium text-sm items-center">
-      <li><a href="../index.html" class="hover:text-[#7c3aed] transition duration-300">Home</a></li>
-      <li><a href="birthday.html" class="hover:text-[#7c3aed] transition duration-300">Birthday</a></li>
-      <li><a href="anniversary.html" class="hover:text-[#7c3aed] transition duration-300">Anniversary</a></li>
-      <li><a href="wedding.html" class="hover:text-[#7c3aed] transition duration-300">Wedding</a></li>
-      <li><a href="wishlist.html" class="hover:text-[#7c3aed] transition duration-300">❤️ Wishlist</a></li>
-      <li><a href="cart.html" class="hover:text-[#7c3aed] transition duration-300">🛒 Cart</a></li>
+    <ul class="flex gap-7 items-center">
+      <li><a href="./wishlist.html" class="hover:text-[#7c3aed] transition duration-300 relative"><img
+            src="../gifts/Wishlist Logo.png" class="w-6"><span id="wishlistCount"
+            class="absolute -top-2 -right-2 text-xs bg-red-500 text-white px-1.5 rounded-full"></span></a>
+      </li>
+      <li><a href="./cart.html" class="hover:text-[#7c3aed] transition duration-300 relative"><img
+            src="../gifts/Cart Logo.png" class="w-6"><span id="cartCount"
+            class="absolute -top-2 -right-2 text-xs bg-red-500 text-white px-1.5 rounded-full"></span></a>
+      </li>
+      <li><a href="./login.html" class="hover:text-[#7c3aed] transition duration-300"><img
+            src="../gifts/Account Logo.png" class="w-6"></a></li>
     </ul>
   </nav>
 
@@ -46,8 +51,20 @@
   <script src="../logic/products.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', function () {
-      loadProductsByCategory('Couple', '#productContainer');
+      loadProductsByCategory('Couple', '.p-6');
     });
+
+    function toggleLike(btn) {
+      btn.innerHTML = btn.innerHTML === "🤍" ? "❤️" : "🤍";
+    }
+
+    function addToCart(name, price) {
+      alert(name + " added to cart - ₹" + price);
+    }
+
+    function goBack() {
+      window.history.back();
+    }
   </script>
 </body>
 

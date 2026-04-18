@@ -1,91 +1,160 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <title>Contact - giftSathi-advisor</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!-- Tailwind CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - giftSathi-advisor</title>
+    <link rel="icon" href="../gifts/Logo.png">
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<body class="bg-purple-50 font-sans text-gray-700">
+<body class="bg-[#f9fafb] font-sans">
 
-  <!-- Header -->
-  <header class="bg-gradient-to-r from-purple-600 to-purple-400 text-white text-center py-10 px-5">
-    <h1 class="text-4xl font-bold">giftSathi-advisor🎁 </h1>
-    <p class="mt-2 opacity-90">Find the Perfect Gift for Every Occasion 💜</p>
-  </header>
-
-  <!-- Container -->
-  <div class="max-w-6xl mx-auto p-6">
-
-    <!-- Contact Wrapper -->
-    <section class="grid md:grid-cols-2 gap-8">
-
-      <!-- Contact Form -->
-      <div class="bg-white p-6 rounded-2xl shadow-lg hover:-translate-y-1 transition duration-300">
-        <h2 class="text-2xl font-semibold text-purple-600 mb-4">Send Us a Message</h2>
-
-        <form class="flex flex-col gap-3">
-          <label class="font-medium">Your Name</label>
-          <input type="text" placeholder="Enter your name"
-            class="p-2 rounded-lg border focus:outline-none focus:ring-2 focus:ring-purple-500" required />
-
-          <label class="font-medium">Your Email</label>
-          <input type="email" placeholder="Enter your email"
-            class="p-2 rounded-lg border focus:outline-none focus:ring-2 focus:ring-purple-500" required />
-
-          <label class="font-medium">Your Message</label>
-          <textarea rows="5" placeholder="Write your message..."
-            class="p-2 rounded-lg border focus:outline-none focus:ring-2 focus:ring-purple-500" required></textarea>
-
-          <button
-            class="mt-3 bg-purple-600 text-white py-2 rounded-lg hover:bg-purple-800 transition">
-            Send Message 🚀
-          </button>
-        </form>
-      </div>
-
-      <!-- Contact Details -->
-      <div class="bg-white p-6 rounded-2xl shadow-lg hover:-translate-y-1 transition duration-300">
-        <h2 class="text-2xl font-semibold text-purple-600 mb-4">Contact Details</h2>
-
-        <div class="space-y-4">
-
-          <div class="bg-purple-50 p-4 rounded-lg hover:bg-purple-100 transition">
-            <h4 class="font-semibold">📞 Phone</h4>
-            <p>+91 98765 43210</p>
-          </div>
-
-          <div class="bg-purple-50 p-4 rounded-lg hover:bg-purple-100 transition">
-            <h4 class="font-semibold">📧 Email</h4>
-            <p>info@giftsathi.com</p>
-          </div>
-
-          <div class="bg-purple-50 p-4 rounded-lg hover:bg-purple-100 transition">
-            <h4 class="font-semibold">📍 Address</h4>
-            <p>xxx</p>
-          </div>
-
+    <!-- NAVBAR -->
+    <nav class="bg-white shadow-md p-4 flex justify-between items-center">
+        <div class="flex items-center gap-3">
+            <button id="openBtn"
+                class="text-2xl bg-white px-3 py-1 rounded shadow cursor-pointer hover:bg-gray-100 transition">
+                ☰
+            </button>
+            <a href="../index.html" class="flex items-center gap-2">
+                <img src="../gifts/Logo.png" alt="Logo" class="w-20 h-12">
+                <span class="text-lg font-bold text-[#7c3aed]">giftSathi-advisor</span>
+            </a>
         </div>
-      </div>
 
-    </section>
+        <ul class="hidden md:flex gap-6 items-center text-gray-700">
+            <li><a href="../index.html" class="hover:text-[#7c3aed] transition">Home</a></li>
+            <li><a href="./about.html" class="hover:text-[#7c3aed] transition">About</a></li>
+            <li><a href="./contact.html"
+                    class="hover:text-[#7c3aed] transition font-semibold text-[#7c3aed]">Contact</a></li>
+            <li><a href="./admin.html" class="hover:text-[#7c3aed] transition">Admin</a></li>
+        </ul>
 
-    <!-- Social Section -->
-    <section class="mt-10 text-center">
-      <h2 class="text-2xl font-semibold text-purple-600 mb-4">Follow Us</h2>
+        <ul class="flex gap-4 items-center">
+            <li><a href="./wishlist.html" class="hover:text-[#7c3aed] transition"><img src="../gifts/Wishlist Logo.png"
+                        class="w-6" alt="Wishlist"></a></li>
+            <li><a href="./cart.html" class="hover:text-[#7c3aed] transition"><img src="../gifts/Cart Logo.png"
+                        class="w-6" alt="Cart"></a></li>
+            <li><a href="./login.html" class="hover:text-[#7c3aed] transition"><img src="../gifts/Account Logo.png"
+                        class="w-6" alt="Account"></a></li>
+        </ul>
+    </nav>
 
-      <div class="flex justify-center gap-4 flex-wrap">
-        <a href="#" class="bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-800 transition">Facebook</a>
-        <a href="#" class="bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-800 transition">Instagram</a>
-        <a href="#" class="bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-800 transition">Twitter</a>
-        <a href="#" class="bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-800 transition">LinkedIn</a>
-      </div>
-    </section>
+    <!-- SIDEBAR -->
+    <div id="sidebar"
+        class="fixed top-0 left-0 w-64 h-full bg-white shadow-lg z-50 transform -translate-x-full transition-transform duration-300 p-4 overflow-y-auto">
+        <button id="closeBtn" class="text-xl mb-4 hover:bg-gray-100 px-2 py-1 rounded transition">✖</button>
+        <h2 class="text-xl font-semibold mb-6">Menu</h2>
 
-  </div>
+        <nav class="space-y-3">
+            <a href="../index.html" class="block p-3 hover:bg-gray-100 rounded cursor-pointer transition">🏠 Home</a>
+            <a href="./about.html" class="block p-3 hover:bg-gray-100 rounded cursor-pointer transition">ℹ️ About</a>
+            <a href="./contact.html" class="block p-3 hover:bg-gray-100 rounded bg-purple-100 transition">📧 Contact</a>
+            <a href="./admin.html" class="block p-3 hover:bg-gray-100 rounded cursor-pointer transition">⚙️ Admin</a>
+        </nav>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <main class="max-w-4xl mx-auto px-4 py-12">
+        <section class="bg-white rounded-lg shadow-lg p-8">
+            <h1 class="text-4xl font-bold text-[#7c3aed] mb-2">Contact Us</h1>
+            <p class="text-gray-600 mb-8">Have questions? We'd love to hear from you!</p>
+
+            <!-- CONTACT FORM -->
+            <form class="space-y-6 mb-8">
+                <div>
+                    <label class="block text-gray-700 font-semibold mb-2">Name</label>
+                    <input type="text" placeholder="Your name"
+                        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#7c3aed]">
+                </div>
+
+                <div>
+                    <label class="block text-gray-700 font-semibold mb-2">Email</label>
+                    <input type="email" placeholder="your@email.com"
+                        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#7c3aed]">
+                </div>
+
+                <div>
+                    <label class="block text-gray-700 font-semibold mb-2">Message</label>
+                    <textarea placeholder="Your message..." rows="5"
+                        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#7c3aed]"></textarea>
+                </div>
+
+                <button type="submit"
+                    class="w-full bg-[#7c3aed] text-white font-semibold py-3 rounded-lg hover:bg-purple-700 transition">
+                    Send Message
+                </button>
+            </form>
+
+            <!-- CONTACT INFO -->
+            <div class="border-t pt-8">
+                <h2 class="text-2xl font-semibold text-gray-800 mb-6">Other Ways to Reach Us</h2>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div>
+                        <h3 class="font-semibold text-gray-800 mb-2">📧 Email</h3>
+                        <p class="text-gray-600">info@giftsathi.com</p>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold text-gray-800 mb-2">📞 Phone</h3>
+                        <p class="text-gray-600">+1 (555) 123-4567</p>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold text-gray-800 mb-2">📍 Address</h3>
+                        <p class="text-gray-600">123 Gift Street, City, Country</p>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold text-gray-800 mb-2">🕐 Hours</h3>
+                        <p class="text-gray-600">Mon - Fri: 9 AM - 6 PM</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- QUICK LINKS -->
+            <div class="flex flex-wrap gap-3 mt-8 pt-8 border-t">
+                <a href="../index.html"
+                    class="px-4 py-2 bg-[#7c3aed] text-white rounded hover:bg-purple-700 transition">← Back to Home</a>
+                <a href="./about.html"
+                    class="px-4 py-2 bg-gray-600 text-white rounded hover:bg-gray-700 transition">About Us</a>
+                <a href="./admin.html"
+                    class="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700 transition">Admin</a>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-gray-800 text-white text-center py-4 mt-12">
+        <p>&copy; 2026 giftSathi-advisor. All rights reserved. | <a href="./contact.html"
+                class="hover:text-yellow-400">Contact</a> | <a href="./about.html"
+                class="hover:text-yellow-400">About</a></p>
+    </footer>
+
+    <!-- NAVBAR SCRIPT -->
+    <script>
+        const openBtn = document.getElementById('openBtn');
+        const closeBtn = document.getElementById('closeBtn');
+        const sidebar = document.getElementById('sidebar');
+
+        if (openBtn) {
+            openBtn.addEventListener('click', () => {
+                sidebar.classList.remove('-translate-x-full');
+            });
+        }
+
+        if (closeBtn) {
+            closeBtn.addEventListener('click', () => {
+                sidebar.classList.add('-translate-x-full');
+            });
+        }
+
+        document.addEventListener('click', (e) => {
+            if (sidebar && !sidebar.contains(e.target) && openBtn && !openBtn.contains(e.target)) {
+                sidebar.classList.add('-translate-x-full');
+            }
+        });
+    </script>
 
 </body>
+
 </html>

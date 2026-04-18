@@ -1,30 +1,41 @@
+// ===== SIDEBAR TOGGLE =====
 const sidebar = document.getElementById("sidebar");
 const openBtn = document.getElementById("openBtn");
 const closeBtn = document.getElementById("closeBtn");
 
-const categoriesBtn = document.getElementById("categoriesBtn");
-const categoriesMenu = document.getElementById("categoriesMenu");
+function toggleSidebar() {
+  sidebar.classList.toggle("-translate-x-full");
+}
 
-const giftsBtn = document.getElementById("giftsBtn");
-const giftsMenu = document.getElementById("giftsMenu");
+openBtn.addEventListener("click", toggleSidebar);
+closeBtn.addEventListener("click", toggleSidebar);
 
-// Sidebar toggle
-openBtn.addEventListener("click", () => {
-  sidebar.classList.remove("-translate-x-full");
+// Close sidebar when clicking outside
+document.addEventListener("click", function (event) {
+  if (
+    !sidebar.contains(event.target) &&
+    !openBtn.contains(event.target) &&
+    !sidebar.classList.contains("-translate-x-full")
+  ) {
+    sidebar.classList.add("-translate-x-full");
+  }
 });
 
-closeBtn.addEventListener("click", () => {
-  sidebar.classList.add("-translate-x-full");
-});
+// ===== DROPDOWN TOGGLES =====
+function toggleCategories() {
+  document.getElementById("categoriesMenu").classList.toggle("hidden");
+  document.getElementById("catArrow").textContent = document
+    .getElementById("categoriesMenu")
+    .classList.contains("hidden")
+    ? "🔻"
+    : "🔻";
+}
 
-// Dropdowns
-categoriesBtn.addEventListener("click", () => {
-  categoriesMenu.classList.toggle("hidden");
-});
 
-giftsBtn.addEventListener("click", () => {
-  giftsMenu.classList.toggle("hidden");
-});
+
+// ===== CART FUNCTIONALITY =====
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
 
 // Category navigation helper
 function jumpToCategory(category) {
